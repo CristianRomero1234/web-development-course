@@ -1,1 +1,29 @@
 # web-development-course
+
+- Lesson 0: HTML + CSS + JavaScript Programming basics. What do I need to know beforehand? 
+- Lesson 1: HTML + CSS. How to Create basic shapes.
+- Lesson 2: HTML + CSS + JavaScript. Changing a HTML tag using JavaScript.
+- Lesson 3: HTML + CSS. How to Create a Card.
+- Lesson 4: HTML + CSS + JavaScript. How to create a Modal.
+- Lesson 5: HTML + CSS + JavaScript. Grid display of Cards Array (with Modal).
+- Lesson 6: HTML + CSS + JavaScript. Project 1: Create a calculator App.
+  - Lesson 6.1:  HTML + CSS + JavaScript. Example: Simple JS implementation of Algorithm for (calculator App) UI creation.
+  - Lesson 6.2:  HTML + CSS + JavaScript. Mock-up Iphone calculator App.
+- Lesson 7: Bootstrap. Introduction to Bootstrap CDN.
+- Lesson 8: React.js. Introduction to React.js CDN.
+- Lesson 9: Vue.js. Introduction to Vue.js CDN.
+- Lesson 10: PHP. Introduction to PHP.
+  - Lesson 10.1: PHP. Localhost WEB server: "Hello World GET Endpoint".
+- Lesson 11: Python. Introduction to Python.
+  - Lesson 11.1: Python. Localhost WEB server: "Hello World GET Endpoint".
+- Lesson 12: Java. Introduction to Java.
+  - Lesson 12.1: Java. Localhost WEB server: "Hello World GET Endpoint".
+- Lesson 13: HTML + CSS + JavaScript + Bootstrap + Node.js. Studies Assistant Web App.
+  - Lesson 13.1: HTML + CSS + JavaScript + Bootstrap. How to create a Notepad.
+  - Lesson 13.2: HTML + CSS + JavaScript + Bootstrap. How to create a To-Do List.
+  - Lesson 13.3: HTML + CSS + JavaScript + Bootstrap. How to create a Pomodoro timer.
+  - Lesson 13.4: Node.js. Backend for Studies Assistant Web App.
+  - Lesson 13.5: HTML + CSS + JavaScript + Bootstrap + Node.js. Integration of Front + Backend.
+- Lesson 14: HTML + CSS + JavaScript + React.js CDN. How to create a Blog (Front end).
+- Lesson 15: HTML + CSS + JavaScript + Vue.js CDN. How to create a Basic Ecommerce "Articles Section".
+- Lesson 16: HTML + CSS + JavaScript + Bootstrap + PHP. Basic Registration + Login system.
