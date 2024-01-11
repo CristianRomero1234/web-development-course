@@ -9,6 +9,7 @@
 - [Circle shape tutorial](https://blog.hubspot.com/website/css-border-radius-circle)
 - [Freecodecamp Tutorial for shapes](https://www.freecodecamp.org/news/css-shapes-explained-how-to-draw-a-circle-triangle-and-more-using-pure-css/)
 - [My take on this excercise](https://codepen.io/cromerolo2/pen/bGKVNpb)
+- [HTML code](./lesson_1.html)
 
 **Some questions for you to answer:**
 - What is CodePen?
@@ -18,10 +19,18 @@
 - What is a `<div>`?
 - What are the ways a developer can provide CSS styles to an HTML element?
 - (CSS) What is margin, padding, height, width, border, background?
+- (CSS) What are the ways a developer can provide color?
+
+*It is advised to register to an AI service and using it for answering the questions, as you will experience a more personalized learning process*
 
 **The exercise to be carried out is:**
 
-Draw using the HTML and CSS languages, 3 geometric shapes. The solution code is provided in the links.
+Draw using the HTML and CSS languages, 3 geometric shapes. The solution code is provided in the links. or you can start using these:
+
+The shapes are used in web development in different areas of a page, think about the User Interface of some apps like Instagram, you can see squares and circles. Find out for yourself some other examples as well.
+
+I will use the following code.
+
 
 ```html
     <div id="triangle"></div>
@@ -57,6 +66,8 @@ Draw using the HTML and CSS languages, 3 geometric shapes. The solution code is 
     }
 ```
 
+**Activity**
+For this excercise, use CodePen and write the provided code accordingly in the correct areas for each language (HTML and CSS).
 
-
-
+Good Luck!
+C.R
