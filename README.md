@@ -1,6 +1,6 @@
 # web-development-course
 
-- Lesson 0: HTML + CSS + JavaScript Programming basics. What do I need to know beforehand? 
+- [Lesson 0](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%200): HTML + CSS + JavaScript Programming basics. What do I need to know beforehand? 
 - Lesson 1: HTML + CSS. How to Create basic shapes.
 - Lesson 2: HTML + CSS + JavaScript. Changing a HTML tag using JavaScript.
 - Lesson 3: HTML + CSS. How to Create a Card.
