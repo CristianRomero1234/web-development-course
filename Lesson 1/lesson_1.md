@@ -21,13 +21,13 @@
 - (CSS) What is margin, padding, height, width, border, background?
 - (CSS) What are the ways a developer can provide color?
 
-*It is advised to register to an AI service and using it for answering the questions, as you will experience a more personalized learning process*
+*It is advised to register to an AI LLM service and using it for answering the questions, as you will experience a more personalized learning process*
 
 **The exercise to be carried out is:**
 
-Draw using the HTML and CSS languages, 3 geometric shapes. The solution code is provided in the links. or you can start using these:
+Draw using the HTML and CSS languages, 3 geometric shapes.
 
-The shapes are used in web development in different areas of a page, think about the User Interface of some apps like Instagram, you can see squares and circles. Find out for yourself some other examples as well.
+The shapes are used in web development in different areas of a page or app, think about the User Interface of some apps like Instagram, you can see squares and circles. (Find out for yourself some other examples as well).
 
 I will use the following code.
 
