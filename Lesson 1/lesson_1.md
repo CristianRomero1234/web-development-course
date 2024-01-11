@@ -15,7 +15,7 @@
 - What is HTML?
 - What is CSS?
 - What is an HTML tag?
-- What is a <div>?
+- What is a `<div>`?
 - What are the ways a developer can provide CSS styles to an HTML element?
 - (CSS) What is margin, padding, height, width, border, background?
 
