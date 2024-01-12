@@ -94,7 +94,7 @@ document.getElementById('closeModal').addEventListener('click', function() {
    - Clicking the "Open Modal" button triggers the `showModal()` method on the dialog, displaying the modal.
    - Clicking the "Close" button inside the modal triggers the `close()` method on the dialog, hiding the modal.
 
-*This lesson is developed making use of AI LLM system*
+*This lesson was developed making use of AI LLM system*
 
 ## Full code:
 

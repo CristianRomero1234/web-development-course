@@ -145,3 +145,5 @@ Now, let's use JavaScript to dynamically create an array of 20 cards and display
 ## Conclusion
 
 By following these steps, you've learned how to dynamically generate an array of card elements using JavaScript and display them in a grid layout. Customize the cardData array with your desired card information and adjust the grid layout as needed. This knowledge can be applied to create dynamic content on web pages.
+
+*This lesson was developed making use of AI LLM system*
