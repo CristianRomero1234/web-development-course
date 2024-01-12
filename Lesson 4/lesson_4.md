@@ -1,8 +1,7 @@
 # How to create a modal
 
 **Usefull links:**
-[Medium Author: Idorenyin Udoh, tutorial how to create a modal using `<dialog>`]
-(https://medium.com/@idorenyinudoh10/mastering-modals-a-comprehensive-guide-to-building-modals-with-the-html-dialog-element-ae64a3c2bab7)
+[Medium Author: Idorenyin Udoh, tutorial how to create a modal using](https://medium.com/@idorenyinudoh10/mastering-modals-a-comprehensive-guide-to-building-modals-with-the-html-dialog-element-ae64a3c2bab7)
 
 
 # Modal Using HTML `<dialog>` Element
