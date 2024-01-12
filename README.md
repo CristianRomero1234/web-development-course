@@ -4,7 +4,7 @@
 -  [Lesson 1](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%201/lesson_1.md): HTML + CSS. How to Create basic shapes.
 - [Lesson 2](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%202/lesson_2.md): HTML + CSS + JavaScript. Changing a HTML tag using JavaScript.
 - [Lesson 3](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%203/lesson_3.md): HTML + CSS. How to Create a Card.
-- Lesson 4: HTML + CSS + JavaScript. How to create a Modal.
+- [Lesson 4](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%204/lesson_4.md): HTML + CSS + JavaScript. How to create a Modal.
 - Lesson 5: HTML + CSS + JavaScript. Grid display of Cards Array (with Modal).
 - Lesson 6: HTML + CSS + JavaScript. Project 1: Create a calculator App.
   - Lesson 6.1:  HTML + CSS + JavaScript. Example: Simple JS implementation of Algorithm for (calculator App) UI creation.

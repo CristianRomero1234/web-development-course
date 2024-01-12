@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Example</title>
+    <style>
+        /* Style for the overlay backdrop */
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Style for the modal container */
+        dialog {
+            border: none;
+            padding: 16px;
+            width: 300px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- The modal dialog -->
+    <dialog id="myModal">
+        <!-- Modal content -->
+        <div>
+            <h2>Modal Title</h2>
+            <p>This is the modal content.</p>
+            <button id="closeModal">Close</button>
+        </div>
+    </dialog>
+
+    <!-- Trigger button to open the modal -->
+    <button id="openModal">Open Modal</button>
+
+    <script>
+        document.getElementById('openModal').addEventListener('click', function() {
+            // Open the modal when the button is clicked
+            document.getElementById('myModal').showModal();
+        });
+
+        document.getElementById('closeModal').addEventListener('click', function() {
+            // Close the modal when the close button is clicked
+            document.getElementById('myModal').close();
+        });
+    </script>
+</body>
+</html>
