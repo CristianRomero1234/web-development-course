@@ -4,9 +4,6 @@
 
 [W3 schools How to create a card with CSS](https://www.w3schools.com/howto/howto_css_cards.asp)
 
-Certainly! Here's the Markdown documentation for the provided HTML and CSS code:
-
-```markdown
 # Round Card Example Documentation
 
 ## Introduction
