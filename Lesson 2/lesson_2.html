@@ -1,0 +1,134 @@
+<!-- Step 1: Set the document structure with the necessary tags (or write contents of <body> in the HTML are of codepen)-->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Change the Colors of Geometric Shapes</title>
+        <!-- Step 2: Add the styles for the page (CSS can be added in a separate file or in Codepen CSS editor) -->
+        <style>
+            .container{
+                display:flex;
+                flex-direction: row;
+                flex-wrap:wrap;
+                justify-content: center;
+                gap: 10px;
+                padding-left:100px;
+                padding-right:100px;  
+            }
+    
+            .shape{
+                margin: auto;
+                width:10px;
+                height:10px;
+            }
+            #circle{
+                width: 10px;
+                padding: 10px;
+                border-radius: 50%;
+                height: 10px;
+                background: blue; 
+            }
+            #triangle{ 
+                width: 0;
+                    height: 0;
+                    border-left: 25px solid transparent;
+                    border-right: 25px solid transparent;
+                    border-bottom: 50px solid yellow;
+            }
+            #square{
+                margin:auto;
+                height: 30px;
+                width: 30px;
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Step 3: Create the heading for the page -->
+        <h1>Change the Colors of Geometric Shapes</h1>
+    
+        <!-- Step 4: Add a paragraph to show the number of attempts (the counter is added as work around to not being able to have separate shapes after some user selection) -->
+        <p id="counterShow">Attempts until reload: </p>
+    
+        <!-- Step 5: Create the container for geometric shapes -->
+        <div class="container">
+            <div class="shape" id="circle"></div>
+            <div class="shape" id="square"></div>
+            <div class="shape" id="triangle"></div>
+        </div>
+    
+        <!-- Step 6: Add a line break for spacing -->
+        <br>
+    
+        <!-- Step 7: Create another container for color and shape selection -->
+        <div class="container">
+            <!-- Step 8: Create an input for selecting the color -->
+            Which color do you want to set for your shape? -&gt; <input type="color" id="color"/>
+    
+            <!-- Step 9: Create a selection dropdown for picking a shape -->
+            Select the shape you want to apply the changes to -&gt;
+            <select id="pickedShape">
+                <option>circle</option>
+                <option>square</option>
+                <option>triangle</option>
+            </select>
+    
+            <!-- Step 10: Create a selection dropdown for choosing a new shape -->
+            Select a new shape for your selection -&gt;
+            <select id="newShape">
+                <option>circle</option>
+                <option>square</option>
+                <option>triangle</option>
+            </select>
+        </div>
+    
+        <!-- Step 11: Create buttons for changing the shape and resetting the page -->
+        <button id="btn-change" style="margin-left:50%">Apply changes!</button>
+        <button id="btn-reset" style="margin-right:50%" onclick="window.location.reload()">reset</button>
+    
+        <!-- Step 12: Add any necessary scripts (JavaScript can be added in a separate file, or in CodePen JavaScript editor) -->
+        <script>
+            var color = document.getElementById("color");
+            var pickedShape = document.getElementById("pickedShape");
+            var newShape = document.getElementById("newShape");
+    
+            var submitchange = document.getElementById("btn-change");
+            var counterShow = document.getElementById("counterShow");
+            var shower = counterShow.innerHTML;
+            var counter = 5;
+    
+            submitchange.addEventListener("click", doChange);
+    
+    
+            function doChange() {
+            counter--
+            var choice = {
+                "oldShape": pickedShape.value,
+                "newShape": newShape.value,
+                "newColor": color.value
+            };
+            if (counter > 0) {
+    
+                counterShow.innerHTML = shower + counter
+                if (choice.newShape != "triangle") {
+                var toChange = document.getElementById(choice.oldShape);
+                toChange.style = null;
+                toChange.id = choice.newShape;
+                toChange.style.background = choice.newColor;
+                } else {
+                var toChange = document.getElementById(choice.oldShape);
+                toChange.style = null;
+                toChange.id = choice.newShape;
+                toChange.style.borderBottom = "50px solid " + choice.newColor;
+                }
+            } else {
+                counterShow.innerHTML = shower + "Reload.... <br> hit F5 key or </br> click in the refresh button of this window"
+                setTimeout(() => { window.reload() }, 500);
+            }
+            }
+    
+        </script>
+    </body>
+    </html>
+    
