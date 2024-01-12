@@ -1,6 +1,6 @@
 # How to create a modal
 
-**Usefull links:**
+**Useful links:**
 [Medium Author: Idorenyin Udoh, tutorial how to create a modal using](https://medium.com/@idorenyinudoh10/mastering-modals-a-comprehensive-guide-to-building-modals-with-the-html-dialog-element-ae64a3c2bab7)
 
 
@@ -61,7 +61,7 @@ dialog {
 }
 ```
 
-## JavaScript (script.js)
+## JavaScript (script.js, or `<script>` tag, or Codepen's JS editor)
 
 ```javascript
 // Add your JavaScript code here
@@ -95,3 +95,57 @@ document.getElementById('closeModal').addEventListener('click', function() {
    - Clicking the "Close" button inside the modal triggers the `close()` method on the dialog, hiding the modal.
 
 *This lesson is developed making use of AI LLM system*
+
+## Full code:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Example</title>
+    <style>
+        /* Style for the overlay backdrop */
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Style for the modal container */
+        dialog {
+            border: none;
+            padding: 16px;
+            width: 300px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- The modal dialog -->
+    <dialog id="myModal">
+        <!-- Modal content -->
+        <div>
+            <h2>Modal Title</h2>
+            <p>This is the modal content.</p>
+            <button id="closeModal">Close</button>
+        </div>
+    </dialog>
+
+    <!-- Trigger button to open the modal -->
+    <button id="openModal">Open Modal</button>
+
+    <script>
+        document.getElementById('openModal').addEventListener('click', function() {
+            // Open the modal when the button is clicked
+            document.getElementById('myModal').showModal();
+        });
+
+        document.getElementById('closeModal').addEventListener('click', function() {
+            // Close the modal when the close button is clicked
+            document.getElementById('myModal').close();
+        });
+    </script>
+</body>
+</html>
+
+```
