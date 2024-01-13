@@ -15,7 +15,7 @@ These instructions are expressed in a formalized manner and are fundamental to v
 
 The effectiveness of algorithms lies in their ability to optimize processes, enhance efficiency, and provide systematic solutions across diverse fields of study and application within the realm of computing.
 
-You can see them as "recipes", that we (programmers) give to a computer, in order to achieve desired state.
+You can see them as "recipes", to achieve desired state (that we programmers translate into code, to later on give to a computer).
 
 Our current desired state is to develop and deliver a "Calculator App". 
 
