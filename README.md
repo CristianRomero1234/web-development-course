@@ -8,7 +8,7 @@
 - [Lesson 5](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%205/lesson_5.md):*HTML + CSS + JavaScript*. **Grid display of Cards Array (with Modal).**
 - [Lesson 6.0](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%206%2E0/lesson_6.md):*HTML + CSS + JavaScript*. **Project 1: Create a calculator App.**
   - [Lesson 6.1](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%206%2E1/lesson_6%2E1.md): *HTML + CSS + JavaScript*. **Example: Simple JS implementation of Algorithm for (calculator App) UI creation.**
-  - Lesson 6.2: *HTML + CSS + JavaScript*. **Mock-up Iphone calculator App.**
+  -  [Lesson 6.2](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%206%2E2/lesson_6%2E2.md): *HTML + CSS + JavaScript*. **Mock-up Iphone calculator App.**
 - Lesson 7: *Bootstrap*. **Introduction to Bootstrap CDN.**
 - Lesson 8: *React.js*. **Introduction to React.js CDN.**
 - Lesson 9: *Vue.js*. **Introduction to Vue.js CDN.**
