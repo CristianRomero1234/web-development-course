@@ -28,13 +28,15 @@ Before writing any code, we will describe in our "recipe", how to create a "Calc
 #### Steps
 
 1. Create a new HTML element, to be used as the "calculator container".
-2. Create HTML elements, to be used as the "calculator keyboard".
+2. Create a new HTML element to be used as the "calculator screen".
+3. Create HTML elements, to be used as the "calculator keyboard".
     - Add "click" event listener to each "calculator key".
-3. Create a new HTML element to be used as the "calculator screen".
+    - Add "keydown" event listener to `document`, in order to "capture" relevant keys to be displayed in "calculator screen".
 4. Append "calculator screen" and "calculator keyboard" to "calculator container".
-    - Display the value of "calculator key" that has been "clicked" by the user  in the"calculator screen" (In case of "delete" or "return" key, update "calculator screen" by deleting or calculating the values accordingly).
+    - Display the value of "calculator key" that has been "clicked" by the user  in the"calculator screen". In case of "delete" or "return" key, update "calculator screen" by deleting or calculating the values accordingly).
 
-It seems that the steps are clear enough, Lets introduce another concept "Pseudo code".
+
+It seems that the steps are clear, Lets introduce another concept "Pseudo code".
 
 #### Pseudo code
 
@@ -51,22 +53,27 @@ Pseudocode is not meant for execution but rather for communication and collabora
 Let's translate our "Steps" into Pseudo code:
 
 ``` 
-constants
-    calculatorContainer : HTMLElement;
-    calculatorScreen : HTMLElement;
-    calculatorKeyboard : Array[HTMLElement];
-end constants
+    constants
+        calculatorContainer : HTMLElement;
+        calculatorScreen : HTMLElement;
+        calculatorKeyboardValues : Array[String];
+        calculatorContainerStyles : String;
+        calculatorScreenStyles : String;
+        calculatorKeyboardStyles : String;
+    end constants
 
-variables
-    calculatorKeyboardValues : Array[String];
-end variables
+    variables
+        calculatorKeyboard : HTMLArray[HTMLElement];
+        operation : String;
+    end variables
 
-methods
-    renderCalculator() : HTMLElement; 
-    updateCalculatorScreen(currentScreenValue : String, clickedKeyValue : String) : HTMLElement;
-    calculateResult(currentScreenValue : String) : String;
-    clearCalculatorScreen() : void;
-end methods
+    methods
+        renderCalculator() : HTMLElement; 
+        AddEventListenerToKey(key : HTMLElement)
+        updateCalculatorScreen(currentScreenValue : String, clickedKeyValue : String) : HTMLElement;
+        calculateResult(currentScreenValue : String) : String;
+        clearCalculatorScreen() : void;
+    end methods
 
 ```
 Please notice the "blocks" for declaring "constants", "variables" and "methods".
@@ -80,27 +87,34 @@ Let's consider the following block:
 constants
     calculatorContainer : HTMLElement;
     calculatorScreen : HTMLElement;
-    calculatorKeyboard : Array[HTMLElement];
+
+    calculatorKeyboardValues : Array[String];
+
+    calculatorContainerCSSStyles : String;
+    calculatorScreenCSSStyles : String;
+    calculatorKeyboardCSSStyles : String;
 end constants
 ```
-We declare the constants for our program, `HTMLElement` means the datatype is an HTML Element, also `Array[HTMLElement]` just means a JavaScript Array that contains several HTML elements, if we try to "translate this to javascript, it would look something like: 
+
+We declare the global constants for our program, Due to pseudo code being a way to translate information to the developer, we can declare the datatype for each component of our program, in the block of `constants`,  `HTMLElement` means the datatype is an HTML Element, also `HTMLArray[HTMLElement]` means an HTML element that contains several HTML elements, if we try to "translate" some of this to javascript, it would look like: 
 
 ```javascript
-const calculatorContainer = document.createElement('div');
-const calculatorScreen = document.createElement('input');
-const calculatorKeyboard = [document.createElement('p'),document.createElement('p'),document.createElement('p')...];
+const calculatorContainer = document.createElement('div');//HTML: <div></div>
+const calculatorScreen = document.createElement('p');//HTML: <p></p>
+const calculatorKeyboardValues = ["0","1","2","3","4","5","6","7"....];
 
 ```
-or in "HTML"
+Pseudo code allow us to better understand and describe our solution prior to writting the executable code (for any programming language). 
 
-```html
-<div>
-    <input/>
-    <p></p><p></p><p></p><p></p>.....
-</div>
-```
+Think in the following phrase said by some Master carpenter to their apprentices: "Measure twice, cut once". 
+For me it means that when we want to be efficcient and succesful in a given task (at any of the human spheres of action, not just wood-cutting tasks), the best practice is to "measure" and assess the breadth of our chore, even if, that means iterating our thought process several times. 
+As apprentices, we need to understand, that we will make mistakes. 
+The value of mistakes is that we learn from them or they give us chances to learn from them until we do (quitting before success shouldn't be an option, so we should consider quitting as a mistake too).
 
-It's time to complete this lesson, your task is to "define your own recipe for the calculator app", then translate it to HTML+CSS+JavaScript, make corrections to your Algorithm so it describes the necessary code for running your own "Calculator App" in the browser.
+Pseudo code is not always the best tool to design or describe software applications, for othe usecases UML diagrams, Flowcharts, and many more can be used. 
+In professional Web development usually the Front-end design is provided to the developer using software tools like canva or figma, and for the Back-end UML diagrams are used for designing the database tables and their relationships, then the full proyect design is presented as flowcharts or "user stories" illustrating the interactions between users and software.
+
+Your task is to use your knowledge and skills to "define your own recipe for the calculator app", then translate it to HTML+CSS+JavaScript, make corrections to your Algorithm so it describes the necessary code for running your own "Calculator App" in the browser.
 
 Good Luck! C.R 
 

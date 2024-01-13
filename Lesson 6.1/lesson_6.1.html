@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithms</title>
+</head>
+
+<body>
+    <script>
+
+        /* 
+        STEPS
+        1. Create a new HTML element, to be used as the "calculator container".
+        2. Create a new HTML element to be used as the "calculator screen".
+        3. Create HTML elements, to be used as the "calculator keyboard".
+            - Add "click" event listener to each "calculator key".
+            - Add "keydown" event listener to `document`, in order to "capture" relevant keys to be displayed in "calculator screen".
+        4. Append "calculator screen" and "calculator keyboard" to "calculator container".
+            - Display the value of "calculator key" that has been "clicked" by the user  in the"calculator screen". In case of "delete" or "return" key, update "calculator screen" by deleting or calculating the values accordingly).
+        -------------------------------------------------------------------------        
+        PSEUDO CODE
+        constants
+            calculatorContainer : HTMLElement;
+            calculatorScreen : HTMLElement;
+            calculatorKeyboardValues : Array[String];
+            calculatorContainerStyles : String;
+            calculatorScreenStyles : String;
+            calculatorKeyboardStyles : String;
+        end constants
+
+        variables
+            calculatorKeyboard : HTMLArray[HTMLElement];
+            operation : String;
+        end variables
+
+        methods
+            renderCalculator() : HTMLElement; 
+            AddEventListenerToKey(key : HTMLElement)
+            updateCalculatorScreen(currentScreenValue : String, clickedKeyValue : String) : HTMLElement;
+            calculateResult(currentScreenValue : String) : String;
+            clearCalculatorScreen() : void;
+        end methods
+        */
+        const calculatorContainer = document.createElement('div');
+        calculatorContainer.id = "container";
+        const calculatorScreen = document.createElement('p');
+        calculatorScreen.id = "screen";
+        const calculatorKeyboardValues = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-", "*", "/", "C", "CA", "Enter"];
+        const calculatorContainerStyles = "margin: auto;display: block;max-width: 300px;height: 50%;min-height: fit-content;padding: 22px;border: 2px solid black;border-radius: 5px;box-shadow: 3px 5px;";
+        calculatorContainer.style = calculatorContainerStyles;
+        const calculatorScreenStyles = "background: #d7d7d9;border: 2px solid black;border-radius: 3px;box-shadow: 3px 5px;margin: auto;min-width: 70%;min-height: 40px;text-align: end;";
+        calculatorScreen.style = calculatorScreenStyles;
+        const calculatorKeyboardStyles = "margin-top:10px;display: grid;grid-template-columns: repeat(3, 25%);grid-template-rows: 20% 20% 20% 20%;column-gap: 10px;row-gap: 15px;place-items: center;justify-content: space-around;"
+
+        let calculatorKeyboard;
+        let operation = null;
+        let keyPressThrottle = false;//not in pseudo-code because it's related to Browser beahviour rather than actual program requirement
+
+        function renderCalculator() {
+            document.body.appendChild(calculatorContainer);
+            calculatorContainer.appendChild(calculatorScreen);
+            calculatorKeyboard = document.createElement('div');
+            calculatorKeyboard.style = calculatorKeyboardStyles;
+            for (var i = 0; i < calculatorKeyboardValues.length; i++) {
+                let button = document.createElement('div');
+                button.innerText = calculatorKeyboardValues[i];
+                button = addEventListenerToKey(button);
+                button.id = `btn ${i}`;
+                calculatorKeyboard.appendChild(button);
+            }
+            calculatorContainer.appendChild(calculatorKeyboard);
+        }
+        function addEventListenerToKey(key) {
+            let keyStringValue = key.innerText;
+            key.addEventListener("click", () => {
+                updateCalculatorScreen(keyStringValue);
+            });
+            document.addEventListener('keydown', function (event) {
+                if (!keyPressThrottle) {
+                    keyPressThrottle = true;
+                    console.log('Key pressed:', event.key);
+                    updateCalculatorScreen(event.key);
+                    setTimeout(function () {
+                        keyPressThrottle = false;
+                    }, 250); // Adjust the throttle interval as needed
+                }
+            });
+            return key;
+        }
+
+        function updateCalculatorScreen(keyValue) {
+
+            switch (keyValue) {
+                case "+":
+                case "-":
+                case "/":
+                case "*":
+                    operation = keyValue;
+                    var screenValue = calculatorScreen.innerText;
+                    if (screenValue === "0") {
+                        calculatorScreen.innerText = keyValue;
+                    } else {
+                        calculatorScreen.innerText = screenValue + keyValue;
+                    }
+                    break;
+                case "C":
+                case "Backspace":
+                    calculatorScreen.innerText = calculatorScreen.innerText.slice(0, -1);
+                    break;
+                case "CA":
+                    clearCalculatorScreen();
+                    break;
+                case "Enter":
+                    if (operation != null) {
+                        calculatorScreen.innerText = calculateResult(calculatorScreen.innerText)
+                        operation = null;
+                    }
+                    break;
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                case "5":
+                case "6":
+                case "7":
+                case "8":
+                case "9":
+                case "0":
+                    calculatorScreen.innerText = calculatorScreen.innerText + keyValue;
+                    break;
+                case "x":
+                case "X":
+                    keyValue = "*"
+                    updateCalculatorScreen(keyValue);
+                    break;
+                default:
+                    console.log("Key is: " + keyValue);
+                    break;
+            }
+        }
+        function calculateResult(currentScreenValue) {
+            return eval(calculatorScreen.innerText);
+        }
+        function clearCalculatorScreen() {
+            calculatorScreen.innerText = calculatorScreen.innerText = "";
+        }
+        renderCalculator();
+    </script>
+</body>
+
+</html>
