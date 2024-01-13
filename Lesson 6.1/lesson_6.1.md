@@ -50,6 +50,7 @@ Its primary purpose is to facilitate communication between programmers and stake
 
 Pseudocode is not meant for execution but rather for communication and collaboration during the early stages of algorithm development.
 
+In our "version" of pseudo code, we define our variables like `componentName : componentDataType`.
 Let's translate our "Steps" into Pseudo code:
 
 ``` 
@@ -95,9 +96,9 @@ constants
     calculatorKeyboardCSSStyles : String;
 end constants
 ```
+We declare the global constants for our program, due to pseudo code being a way to translate information to the developers, we can declare the datatype for each component of our program.
 
-We declare the global constants for our program, Due to pseudo code being a way to translate information to the developer, we can declare the datatype for each component of our program.
-In the block of `constants`,  `HTMLElement` means the datatype is an HTML Element, also `HTMLArray[HTMLElement]` means an HTML element that contains several HTML elements.
+In the block of `constants ... end constants`,  `HTMLElement` means the datatype is an HTML Element, also in the `variables .... end variables` `HTMLArray[HTMLElement]` means an HTML element that contains several HTML elements.
 
 If we try to "translate" some of this to javascript, it would look like: 
 
