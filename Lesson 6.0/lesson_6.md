@@ -1,3 +1,5 @@
+# Create a calculator App.
+
 ### Step 1: Set Up the HTML Structure
 
 Create an HTML file (e.g., `index.html`) and set up the basic structure:

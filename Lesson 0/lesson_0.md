@@ -1,8 +1,8 @@
 Before starting the web development course, here are some things a person should know or consider:
 
-1. **Basic Computer Skills:** Ensure that you are comfortable using a computer and have a basic understanding of file management, using a text editor, and navigating through different directories.
+1. **Basic Computer Skills:** Ensure that you are comfortable using a computer and have a basic understanding of file management, using a text editor, and navigating through different directories (files saved with extension `.html` can be opened in the browser locally, files saved with extension `.css` or `.js` can be called from `.html` files, for adding styles (CSS) and functionality (JavaScript)).
 
-2. **Internet Browsing Knowledge:** Familiarize yourself with web browsers and basic internet navigation. Understand how to search for information and troubleshoot common browser-related issues.
+2. **Internet Browsing Knowledge:** Familiarize yourself with web browsers and basic internet navigation. Understand how to search for information and troubleshoot common browser-related issues (Google, AI LLM Systems, StackOverflow, W3Schools....).
 
 3. **Understanding of HTML and CSS Basics:** The course starts with HTML and CSS. Make sure you have a foundational understanding of these technologies as they form the basis for web development.
 
