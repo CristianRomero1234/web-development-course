@@ -70,7 +70,7 @@ Let's translate our "Steps" into Pseudo code:
     methods
         renderCalculator() : HTMLElement; 
         AddEventListenerToKey(key : HTMLElement)
-        updateCalculatorScreen(currentScreenValue : String, clickedKeyValue : String) : HTMLElement;
+        updateCalculatorScreen(clickedKeyValue : String) : HTMLElement;
         calculateResult(currentScreenValue : String) : String;
         clearCalculatorScreen() : void;
     end methods
@@ -80,7 +80,7 @@ Please notice the "blocks" for declaring "constants", "variables" and "methods".
 
 This doesn't look like JavaScript code, but is a good approach to solving our task. 
 
-**Explanation**
+#####Explanation
 Let's consider the following block: 
 
 ``` 
@@ -96,7 +96,10 @@ constants
 end constants
 ```
 
-We declare the global constants for our program, Due to pseudo code being a way to translate information to the developer, we can declare the datatype for each component of our program, in the block of `constants`,  `HTMLElement` means the datatype is an HTML Element, also `HTMLArray[HTMLElement]` means an HTML element that contains several HTML elements, if we try to "translate" some of this to javascript, it would look like: 
+We declare the global constants for our program, Due to pseudo code being a way to translate information to the developer, we can declare the datatype for each component of our program.
+In the block of `constants`,  `HTMLElement` means the datatype is an HTML Element, also `HTMLArray[HTMLElement]` means an HTML element that contains several HTML elements.
+
+If we try to "translate" some of this to javascript, it would look like: 
 
 ```javascript
 const calculatorContainer = document.createElement('div');//HTML: <div></div>
@@ -104,15 +107,19 @@ const calculatorScreen = document.createElement('p');//HTML: <p></p>
 const calculatorKeyboardValues = ["0","1","2","3","4","5","6","7"....];
 
 ```
-Pseudo code allow us to better understand and describe our solution prior to writting the executable code (for any programming language). 
+Pseudo code allow us to better understand and describe our solution prior to writting the executable code (the pseudo code then will be translated to any programming language that better suits the needs). 
 
 Think in the following phrase said by some Master carpenter to their apprentices: "Measure twice, cut once". 
+
 For me it means that when we want to be efficcient and succesful in a given task (at any of the human spheres of action, not just wood-cutting tasks), the best practice is to "measure" and assess the breadth of our chore, even if, that means iterating our thought process several times. 
+
 As apprentices, we need to understand, that we will make mistakes. 
+
 The value of mistakes is that we learn from them or they give us chances to learn from them until we do (quitting before success shouldn't be an option, so we should consider quitting as a mistake too).
 
 Pseudo code is not always the best tool to design or describe software applications, for othe usecases UML diagrams, Flowcharts, and many more can be used. 
-In professional Web development usually the Front-end design is provided to the developer using software tools like canva or figma, and for the Back-end UML diagrams are used for designing the database tables and their relationships, then the full proyect design is presented as flowcharts or "user stories" illustrating the interactions between users and software.
+
+In professional Web development usually the Front-end design is provided to the developer using software tools like canva or figma, and for the Back-end UML diagrams are used for designing the database tables and their relationships, the full proyect is designed as flowcharts or "user stories" illustrating the interactions between users and software.
 
 Your task is to use your knowledge and skills to "define your own recipe for the calculator app", then translate it to HTML+CSS+JavaScript, make corrections to your Algorithm so it describes the necessary code for running your own "Calculator App" in the browser.
 
