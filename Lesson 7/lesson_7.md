@@ -2,8 +2,8 @@
 
 ## Useful links
 
-[Bootstrap Official Web](https://getbootstrap.com/)
-[Bootstrap Official Documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+- [Bootstrap Official Web](https://getbootstrap.com/)
+- [Bootstrap Official Documentation](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 
 **Introduction to Bootstrap CDN in Web Development**
 
@@ -122,4 +122,6 @@ This first template can be the base for more complex pages, I'd recommend for yo
 This is not the end of our path using Bootstrap, don't worry, we will use it in a future lesson. Start learning this useful tool to be prepared.  
 
 *The example code used for this lesson was taken from "https://www.w3schools.com/bootstrap5/tryit.asp?filename=trybs_default&stacked=h"*
+
+
 Good Luck! C.R
