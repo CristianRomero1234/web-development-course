@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React CDN example</title>
+    <!-- React "development" CDN links -->
+    <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <!-- Babel standalone (for development) -->
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+    <!-- Inside the body tag -->
+    <div id="root"></div>
+
+    <!-- React components -->
+    <script type="text/babel">
+        // Header component
+        const Header = () => {
+            return (
+                <header>
+                    <h1>React CDN App</h1>
+                </header>
+            );
+        };
+
+        // Content component
+        const Content = () => {
+            return (
+                <div>
+                    <p>This is the content of the React app.</p>
+                </div>
+            );
+        };
+
+        // App component that renders Header and Content components
+        const App = () => {
+            return (
+                <div>
+                    <Header />
+                    <Content />
+                </div>
+            );
+        };
+
+        // Render the App component into the container with id "root"
+        ReactDOM.render(<App/>, document.getElementById('root'));
+    </script>
+
+</body>
+
+</html>

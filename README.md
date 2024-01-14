@@ -10,7 +10,7 @@
   - [Lesson 6.1](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%206%2E1/lesson_6%2E1.md): *HTML + CSS + JavaScript*. **Example: Simple JS implementation of Algorithm for (calculator App) UI creation.**
   -  [Lesson 6.2](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%206%2E2/lesson_6%2E2.md): *HTML + CSS + JavaScript*. **Mock-up Iphone calculator App.**
 -  [Lesson 7](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%207/lesson_7.md): *Bootstrap*. **Introduction to Bootstrap CDN.**
-- Lesson 8: *React.js*. **Introduction to React.js CDN.**
+- [Lesson 8](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%208/lesson_8.md): *React.js*. **Introduction to React.js CDN.**
 - Lesson 9: *Vue.js*. **Introduction to Vue.js CDN.**
 - Lesson 10: *PHP*. **Introduction to PHP.**
   - Lesson 10.1: *PHP*. **Localhost WEB server: "Hello World GET Endpoint".**
