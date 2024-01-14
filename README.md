@@ -11,19 +11,15 @@
   -  [Lesson 6.2](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%206%2E2/lesson_6%2E2.md): *HTML + CSS + JavaScript*. **Mock-up Iphone calculator App.**
 -  [Lesson 7](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%207/lesson_7.md): *Bootstrap*. **Introduction to Bootstrap CDN.**
 - [Lesson 8](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%208/lesson_8.md): *React.js*. **Introduction to React.js CDN.**
-- Lesson 9: *Vue.js*. **Introduction to Vue.js CDN.**
-- Lesson 10: *PHP*. **Introduction to PHP.**
-  - Lesson 10.1: *PHP*. **Localhost WEB server: "Hello World GET Endpoint".**
-- Lesson 11: *Python*. **Introduction to Python.**
-  - Lesson 11.1: *Python*. **Localhost WEB server: "Hello World GET Endpoint".**
-- Lesson 12: *Java*. **Introduction to Java.**
-  - Lesson 12.1: *Java*. **Localhost WEB server: "Hello World GET Endpoint".**
-- Lesson 13:*HTML + CSS + JavaScript + Bootstrap + Node.js. **Studies Assistant Web App.**
-  - Lesson 13.1:*HTML + CSS + JavaScript + Bootstrap*. **How to create a Notepad.**
-  - Lesson 13.2:*HTML + CSS + JavaScript + Bootstrap*. **How to create a To-Do List.**
-  - Lesson 13.3:*HTML + CSS + JavaScript + Bootstrap*. **How to create a Pomodoro timer.**
-  - Lesson 13.4: Node.js. **Backend for Studies Assistant Web App.**
-  - Lesson 13.5:*HTML + CSS + JavaScript + Bootstrap + Node.js*. **Integration of Front + Backend.**
-- Lesson 14:*HTML + CSS + JavaScript + React.js CDN*. **How to create a Blog (Front end).**
-- Lesson 15:*HTML + CSS + JavaScript + Vue.js CDN*. **How to create a Basic Ecommerce "Articles Section".**
-- Lesson 16:*HTML + CSS + JavaScript + Bootstrap + PHP*. **Basic Registration + Login system.**
+- [Lesson 9](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%209/lesson_9.md): *PHP*. **Introduction to PHP.** + **Localhost WEB server: "Hello World GET Endpoint".**
+- Lesson 10: *Python*. **Introduction to Python.** * **Localhost WEB server: "Hello World GET Endpoint".**
+- Lesson 11: *Java*. **Introduction to Java.** + **Localhost WEB server: "Hello World GET Endpoint".**
+- Lesson 12:*HTML + CSS + JavaScript + Bootstrap + Node.js. **Studies Assistant Web App.**
+  - Lesson 12.1:*HTML + CSS + JavaScript + Bootstrap*. **How to create a Notepad.**
+  - Lesson 12.2:*HTML + CSS + JavaScript + Bootstrap*. **How to create a To-Do List.**
+  - Lesson 12.3:*HTML + CSS + JavaScript + Bootstrap*. **How to create a Pomodoro timer.**
+  - Lesson 12.4: Node.js. **Backend for Studies Assistant Web App.**
+  - Lesson 12.5:*HTML + CSS + JavaScript + Bootstrap + Node.js*. **Integration of Front + Backend.**
+- Lesson 13:*HTML + CSS + JavaScript + React.js CDN*. **How to create a Blog (Front end).**
+- Lesson 14:*HTML + CSS + JavaScript + Vue.js CDN*. **How to create a Basic Ecommerce "Articles Section".**
+- Lesson 15:*HTML + CSS + JavaScript + Bootstrap + PHP*. **Basic Registration + Login system.**
