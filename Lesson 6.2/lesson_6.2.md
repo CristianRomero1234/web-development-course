@@ -15,7 +15,7 @@ This being said, let's consider the HTML, CSS and JavaScript code for achieving 
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Clonar Calculadora Iphone</title>
+  <title>Clone Calculator App (Iphone)</title>
   <link rel="stylesheet" href="./style.css">
 
 </head>
@@ -100,7 +100,7 @@ var disposicionTecladoVirtual = [
   "C",
   "+/-",
   "%",
-  "&#247;",
+  "÷",
   7,
   8,
   9,
@@ -153,7 +153,7 @@ function mostrarBotones() {
         button.id = `btn ${i}`;
         button.style.background = "#6b6666";
         btnArea.appendChild(button);
-      case "&#247;":
+      case "÷":
       case "+":
       case "-":
       case "x":
@@ -189,7 +189,7 @@ function clickListeners() {
         switch (button.innerHTML) {
           case "+":
           case "-":
-          case "&#247;":
+          case "÷":
           case "x":
             var keyPressed = button.innerHTML;
             routeOperation(keyPressed);
@@ -419,7 +419,7 @@ function borrarUltimoCaracter() {
 
 crearCalculadora();
 ```
-Our previous lesson implements a cleaner solution for a calculator App, your task is to perform the "code integration" between the one provided here and the previous lesson code to achieve the goal of "cloning Iphone calculator app"
+Our previous [lesson](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%206%2E1/lesson_6%2E1.md) introduced us to the concept of algorthms, [in the code for the lesson 6.1](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%206%2E1/lesson_6%2E1.html)we implement a cleaner solution for developing calculator App, your task is to read the code and perform the "code integration" between the example provided here and the previous lesson code to achieve the goal of "cloning Iphone calculator app"
 
 
 Good luck! C.R

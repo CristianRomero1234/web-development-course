@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clone Calculator App (Iphone)</title>
+</head>
+
+<body>
+    <script>
+        /*
+        GOAL: "Achieve the UI styles and functionalities of Iphone's calculator app (clone)"
+        STEPS:
+        1. Create a new HTML element, to be used as the "calculator container".
+        2. Create a new HTML element to be used as the "calculator screen".
+        3. Create HTML elements, to be used as the "calculator keyboard".
+            - Add "click" event listener to each "calculator key".
+            - Add "keydown" event listener to `document`, in order to "capture" relevant keys to be displayed in "calculator screen".
+        4. Append "calculator screen" and "calculator keyboard" to "calculator container".
+            - Display the value of "calculator key" that has been "clicked" by the user  in the"calculator screen". In case of "delete" or "return" key, update "calculator screen" by deleting or calculating the values accordingly).
+        5. Apply styles to achieve a similiar look and feel as offered by Iphone's calculator App.
+        
+        //C.R note: [I will] skip pseudo code for this example, but we will implement lesson 6.1 code to create the calculator app
+        */
+
+        const calculatorContainer = document.createElement('div');
+        calculatorContainer.id = "container";
+        const calculatorScreen = document.createElement('p');
+        calculatorScreen.id = "screen";
+        const calculatorKeyboardValues = ["C", "+/-", "%", '÷', 7, 8, 9, "x", 4, 5, 6, "-", 1, 2, 3, "+", 0, ",", "="];
+        const calculatorContainerStyles = "margin-left: 35%;display: block;width: 390px;height: fit-content;padding: 22px;border: 2px solid black;border-radius: 5px;box-shadow: 3px 5px;background: black;";
+        calculatorContainer.style = calculatorContainerStyles;
+        const calculatorScreenStyles = " border: 2px solid black;border-radius: 3px;margin: auto;min-width: 70%;min-height: 40px;text-align: end;font-family: \"Helvetica\";font-size: 70px;color: white;";
+        calculatorScreen.style = calculatorScreenStyles;
+        const calculatorKeyboardStyles = "display: grid;grid-template-columns: repeat(4, 25%);grid-template-rows: repeat(5, 20%);row-gap: 5px;column-gap: 5px;place-items: center;font-family: \"Helvetica\";font-size: 40px;"
+        const calculatorDefaultKeyStyles = "display: grid;place-items: center;min-width: fit-content;width: 80px;height: 80px;border-radius: 50px;background: orange;color:white;";
+        const calculatorZeroKeyStyles = "grid-column: 1/3;display: grid;justify-items: left;align-items: center;background: orange;height: 85px;width: 170px;padding-left: 30px;border-radius: 80px 80px;background:#3d3d3d;color:white;";
+        const calculatorClearChangeSignAndPercentageKeyStyles = calculatorDefaultKeyStyles + "background: #6b6666;";
+
+        let calculatorKeyboard;
+        let operation = null;
+        let keyPressThrottle = false;
+
+        function renderCalculator() {
+            document.body.appendChild(calculatorContainer);
+            calculatorContainer.appendChild(calculatorScreen);
+            calculatorKeyboard = document.createElement('div');
+            calculatorKeyboard.style = calculatorKeyboardStyles;
+            for (var i = 0; i < calculatorKeyboardValues.length; i++) {
+                let button = document.createElement('div');
+                button.innerHTML = calculatorKeyboardValues[i];
+                applyIphoneCalculatorKeysStyles(button, i);
+                button = addEventListenerToKey(button);
+                calculatorKeyboard.appendChild(button);
+            }
+            calculatorContainer.appendChild(calculatorKeyboard);
+        }
+        function applyIphoneCalculatorKeysStyles(key, index) {
+            switch (key.innerHTML) {
+                default:
+                    key.id = `btn ${index}`;
+                    key.style = calculatorDefaultKeyStyles + "background: #3d3d3d;color:white;";
+                    return key;
+                case Number("0"):
+                case "0":
+                    key.id = "btn_zero";
+                    key.style = calculatorZeroKeyStyles;
+                    return key;
+                case "C":
+                case "+/-":
+                case "%":
+                    key.id = `btn ${index}`;
+                    key.style = calculatorClearChangeSignAndPercentageKeyStyles;
+                    return key;
+                case '÷':
+                case "+":
+                case "-":
+                case "x":
+                case "=":
+                    key.id = `btn ${index}`;
+                    key.style = calculatorDefaultKeyStyles;
+                    return key;
+            }
+        }
+
+        function addEventListenerToKey(key) {
+            let keyStringValue = key.innerHTML;
+            key.addEventListener("click", () => {
+                updateCalculatorScreen(keyStringValue);
+            });
+            document.addEventListener('keydown', function (event) {
+                if (!keyPressThrottle) {
+                    keyPressThrottle = true;
+                    console.log('Key pressed:', event.key);
+                    updateCalculatorScreen(event.key);
+                    setTimeout(function () {
+                        keyPressThrottle = false;
+                    }, 250); // Adjust the throttle interval as needed
+                }
+            });
+            return key;
+        }
+        function updateCalculatorScreen(keyValue) {
+            switch (keyValue) {
+                case "%":
+                    calculatorScreen.innerHTML += keyValue;
+                    var result = calculatorScreen.innerHTML.slice(0, calculatorScreen.innerHTML.indexOf("%"));
+                    calculatorScreen.innerHTML = Number(result) / 100;
+                    break;
+                case "+/-":
+                    var swap = Number(calculatorScreen.innerHTML);
+                    calculatorScreen.innerHTML = swap * -1;
+                    break;
+                case "x":
+                case "X":
+                    keyValue = "*"
+                    updateCalculatorScreen(keyValue);
+                    break;
+                case "÷":
+                    keyValue = "/"
+                    updateCalculatorScreen(keyValue);
+                    break;
+                case "+":
+                case "-":
+                case "*":
+                case "/":
+                    operation = keyValue;
+                    var screenValue = calculatorScreen.innerHTML;
+                    if (screenValue === "0") {
+                        calculatorScreen.innerHTML = keyValue;
+                    } else {
+                        calculatorScreen.innerHTML = screenValue + keyValue;
+                    }
+                    break;
+                case "c":
+                case "C":
+                case "Backspace":
+                    calculatorScreen.innerHTML = calculatorScreen.innerHTML.slice(0, -1);
+                    break;
+                case "Enter":
+                case "=":
+                    if (operation != null) {
+                        calculatorScreen.innerHTML = calculateResult(calculatorScreen.innerHTML)
+                        operation = null;
+                    }
+                    break;
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                case "5":
+                case "6":
+                case "7":
+                case "8":
+                case "9":
+                case "0":
+                    calculatorScreen.innerHTML = calculatorScreen.innerHTML + keyValue;
+                    break;
+                default:
+                    console.log("Key is: " + keyValue);
+                    break;
+            }
+        }
+        function calculateResult(currentScreenValue) {
+            return eval(calculatorScreen.innerHTML);
+        }
+        function clearCalculatorScreen() {
+            calculatorScreen.innerHTML = calculatorScreen.innerHTML = "";
+        }
+        renderCalculator();
+    </script>
+</body>
+
+</html>
