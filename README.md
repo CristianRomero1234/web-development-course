@@ -14,12 +14,10 @@
 - [Lesson 9](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%209/lesson_9.md): *PHP*. **Introduction to PHP.** + **Localhost WEB server: "Hello World GET Endpoint".**
 - [Lesson 10](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%2010/lesson_10.md): *Python*. **Introduction to Python.** + **Localhost WEB server: "Hello World GET Endpoint".**
 -  [Lesson 11](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%2011/lesson_11.md): *Java*. **Introduction to Java.** + **Localhost WEB server: "Hello World GET Endpoint".**
-- Lesson 12:*HTML + CSS + JavaScript + Bootstrap + Node.js. **Studies Assistant Web App.**
+- Lesson 12:*HTML + CSS + JavaScript + Bootstrap*. **Studies Assistant Web App.**
   - Lesson 12.1:*HTML + CSS + JavaScript + Bootstrap*. **How to create a Notepad.**
   - Lesson 12.2:*HTML + CSS + JavaScript + Bootstrap*. **How to create a To-Do List.**
   - Lesson 12.3:*HTML + CSS + JavaScript + Bootstrap*. **How to create a Pomodoro timer.**
-  - Lesson 12.4: Node.js. **Backend for Studies Assistant Web App.**
-  - Lesson 12.5:*HTML + CSS + JavaScript + Bootstrap + Node.js*. **Integration of Front + Backend.**
 - Lesson 13:*HTML + CSS + JavaScript + React.js CDN*. **How to create a Blog (Front end).**
-- Lesson 14:*HTML + CSS + JavaScript + Vue.js CDN*. **How to create a Basic Ecommerce "Articles Section".**
+- Lesson 14:*HTML + CSS + JavaScript + React.js CDN*. **How to create a Basic Ecommerce "Articles Section".**
 - Lesson 15:*HTML + CSS + JavaScript + Bootstrap + PHP*. **Basic Registration + Login system.**
