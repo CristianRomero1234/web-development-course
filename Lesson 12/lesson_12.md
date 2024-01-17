@@ -74,8 +74,9 @@ Update index.html. Add Bootstrap CDN links
 
 In this step, we will create the [Navigation Bar](https://en.wikipedia.org/wiki/Navigation_bar) for the app.
 
-In the Navigation Bar we will include links to useful online tools ando hter webs like: google search, google calendar, as we're just warming up we will use some placeholder links "#" for other features of our web page.
-Notice the use of [semantic HTML](https://www.semrush.com/blog/semantic-html5-guide/) on the example, other good practices are to include unique "id" attributes for each element inside <body>.
+In the Navigation Bar we will include links to useful online tools and other webs like: google search, google calendar; as we're just warming up, we will use some placeholder links "#" for other features of our web page.
+
+*Notice the use of [semantic HTML](https://www.semrush.com/blog/semantic-html5-guide/) in the example, other good practices are to include unique "id" attributes for each element inside <body>.*
 
 - As a container for our Navigation Bar we will use the HTML tag `<nav>`. 
 
@@ -88,6 +89,7 @@ The HTML for this `<nav>`:
 
 ```html
  <!--inside index.html body tag-->
+ <!-- append the following line -->
   <nav class="navbar navbar-expand-sm bg-light" id="navbar-parent-element"></nav>
 
 ```
@@ -101,7 +103,7 @@ Now, we follow by creating a `<section>` tag, with [Boostrap class](https://www.
   </nav>
 
 ```
-Inside our section, we wil create an unordered list `<ul>`with [Boostrap class](https://www.w3schools.com/bootstrap/bootstrap_ref_all_classes.asp): "navbar-nav"
+Inside our `<section>`, we wil create an unordered list `<ul>`with [Boostrap class](https://www.w3schools.com/bootstrap/bootstrap_ref_all_classes.asp): "navbar-nav"
 
 ```html
  <!--inside index.html body tag-->
@@ -113,10 +115,10 @@ Inside our section, we wil create an unordered list `<ul>`with [Boostrap class](
   </nav>
 
 ```
-Continue by adding the first list item `<li>` inside of you unordered list `<ul>`. 
+Continue by adding the first list item `<li>` inside of your unordered list `<ul>`. 
 
-*The list items `<li>` of the navigation bar, will use the Bootstrap class "nav-item"*
-*You can use links to your preferred tools intead of the suggested here*
+*The list items `<li>` of the navigation bar, will use the Bootstrap class "nav-item".*
+
 
 ```html
  <!--inside index.html body tag-->
@@ -238,6 +240,7 @@ The contents of your index.html file should look similar to:
 </html>
 
 ```
+*You can use links to your preferred tools instead of the suggested here*
 --- 
 
 Now open it in the Browser, and check you web page.
