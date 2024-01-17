@@ -241,9 +241,160 @@ The contents of your index.html file should look similar to:
 
 ```
 *You can use links to your preferred tools instead of the suggested here*
---- 
 
 Now open it in the Browser, and check you web page.
+
+--- 
+
+#### Step 4
+
+> Bootstrap CDN, provides the necessary CSS and JS code that help us use "Bootstrap Components".
+
+Let's change "Notepad" to a dropdown menu (nav-item dropdown) instead of a link (nav-item).
+
+In this way we can organize other resources for text-handling tasks (Including writing our own notepad using HTML, CSS and JS).
+
+Basically, we will add "dropdown" to the `class` attribute of the `<li>` that contains the word "Notepad".
+
+From:
+
+```html
+<!--The other code that already exist in you index.html -->
+<li class="nav-item">
+    <a class="nav-link" href="#">Notepad</a>
+</li>
+<!--The other code that already exist in you index.html -->
+```
+
+to:
+
+```html
+<li class="nav-item dropdown">
+   <a class="nav-link" href="#">Notepad</a>
+</li> 
+```
+
+Then, we will replace the word "Notepad" in favor of "Text Management Tools".
+
+```html
+<!--The other code that already exist in you index.html -->
+<li class="nav-item">
+    <a class="nav-link" href="#">Text Management Tools</a>
+</li>
+<!--The other code that already exist in you index.html -->
+```
+
+Update the `<a>` element with following attributes and values:
+
+- `class="nav-link dropdown-toggle"`
+- `role="button"`
+- `data-bs-toggle="dropdown"`
+
+Like this:
+
+```html
+<!--The other code that already exist in you index.html -->
+<li class="nav-item">
+     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Text Management Tools</a>
+</li>
+<!--The other code that already exist in you index.html -->
+```
+Now, let's add an unordered list `<ul>` at the same level of "Text Management Tools". The Bootstrap class is "dropdown-menu".
+
+```html
+<!--The other code that already exist in you index.html -->
+<li class="nav-item">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Text Management Tools</a>
+    <!-- append the following line -->
+    <ul class="dropdown-menu"></ul>
+</li>
+<!--The other code that already exist in you index.html -->
+```
+
+To complete the code and demonstrate a dropdown menu inside of our Navbar, we will add placeholder links to "Google docs", "Online PDF editor" and the Notepad we will create during this lesson. 
+
+As we're going to create them inside of our unordered list element `<ul>`, the links `<a>` will be inside of `<li>` tags.
+
+The `<a>` tags for the dropdown menu Items will use the following attributes:
+
+- `class="dropdown-item"`
+- `href="#"`
+
+At this point we won't update the link's `href` attribute (not until we finish the Notepad).
+
+Now, update your code accordingly (refere to the comments below for guidance). The  old link to "Notepad" should now, look like this:
+
+```html
+<!--The other code that already exist in you index.html -->
+<li class="nav-item">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Text Management Tools</a>
+    <ul class="dropdown-menu">
+        <!-- append the following line -->
+        <li><a class="dropdown-item" href="#">Google Docs</a></li>
+        <!-- then, the following line -->
+        <li><a class="dropdown-item" href="#">Online PDF editor</a></li>
+        <!-- and now, the following line -->
+        <li><a class="dropdown-item" href="#">Notepad</a></li>
+    </ul>
+</li>
+<!--The other code that already exist in you index.html -->
+```
+
+The whole index.html ile should now look similar to this: 
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>App my Studies tool</title>
+</head>
+<body>
+    <!-- A grey horizontal navbar that becomes vertical on small screens -->
+    <nav class="navbar navbar-expand-sm bg-light">
+        <section class="container-fluid">
+            <!-- Links -->
+            <ul class="navbar-nav">
+                <li class="nav-item" id="dropdown">
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Google Docs</a></li>
+                        <li><a class="dropdown-item" href="#">Online PDF editor</a></li>
+                        <li><a class="dropdown-item" href="#">Notepad</a></li>
+                    </ul>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Text Management Tools</a>
+                </li>                
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pomodoro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">To-Do List</a>
+                </li>
+                <li class="nav-item">
+                    <a target="_blank" href="https://www.google.com/">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png"
+                            alt="Google" style=" margin-left: 3px; max-height: 40px;">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="https://calendar.google.com/calendar">
+                        <img style="max-height: 40px ; margin-left: 3px;"
+                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Calendar_icon_%282020%29.svg/2048px-Google_Calendar_icon_%282020%29.svg.png"
+                             alt="Google Calendar" height="75"/>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </nav>
+</body>
+</html>
+```
+*The orders of "nav-items" have been shifted as well*
+
+--- 
 
 This tutorial is part of a series, please continue in the next lesson.
 

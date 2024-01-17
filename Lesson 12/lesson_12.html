@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,27 +14,39 @@
         <section class="container-fluid">
             <!-- Links -->
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a target="_blank" href="https://www.google.com/">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png"
-                            alt="Google" style="max-height: 40px">
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" target="_blank" href="https://calendar.google.com/calendar"><img
-                            style="max-height: 40px ; margin-left: 3px;"
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Calendar_icon_%282020%29.svg/2048px-Google_Calendar_icon_%282020%29.svg.png"
-                            alt="Google Calendar" height="75" />
-                    </a>
+                <li class="nav-item" id="dropdown">
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Google Docs</a></li>
+                        <li><a class="dropdown-item" href="#">Online PDF editor</a></li>
+                        <li><a class="dropdown-item" href="#">Notepad</a></li>
+                    </ul>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Text Management
+                        Tools</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Pomodoro</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Notepad</a>
+                    <a class="nav-link" href="#">To-Do List</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">To-Do List</a>
+                    <a target="_blank" href="https://www.google.com/">
+                        <img 
+                            alt="Google" 
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png"
+                            style=" margin-left: 3px; max-height: 40px;"
+                        />
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="https://calendar.google.com/calendar">
+                        <img 
+                            alt="Google Calendar" 
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Calendar_icon_%282020%29.svg/2048px-Google_Calendar_icon_%282020%29.svg.png"
+                            style="max-height: 40px ; margin-left: 3px;"
+                            height="75" 
+                        />
+                    </a>
                 </li>
             </ul>
         </section>
