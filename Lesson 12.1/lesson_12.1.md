@@ -34,9 +34,9 @@ Add a `<section>` with `class` "accordion".
 <section class="accordion" id="accordion-parent-container"></section>
 <!--The other code that already exist in your index.html -->
 ```
-Each of the containers tags for the accordion items, are going to use the Bootstrap class "accordion-item".
-
 Inside the `<section>` from previous example let's append another `<section>` tag, with class "accordion-item"
+
+Each of the containers tags for the accordion items, are going to use the Bootstrap class "accordion-item".
 
 Example Code:
 
@@ -169,6 +169,8 @@ With this, we finish the basic layout of our Studies tools app.
 
 The index.html file at the end of this lesson, should look like: 
 
+```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -275,7 +277,7 @@ The index.html file at the end of this lesson, should look like:
     </section>
 </body>
 </html>
-
+```
 --- 
 
 This tutorial is part of a series, please continue in the next lesson.
