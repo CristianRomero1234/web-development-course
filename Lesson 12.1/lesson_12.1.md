@@ -293,7 +293,7 @@ The index.html file at the end of this lesson, should look like:
 </body>
 </html>
 ``` 
-Save the code to your index.html file and open it in the browser.
+Save the code to your index.html file and open it in the browser to see the results.
 
 --- 
 
