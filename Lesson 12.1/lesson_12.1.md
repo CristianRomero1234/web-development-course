@@ -297,4 +297,4 @@ Save the code to your index.html file and open it in the browser to see the resu
 
 --- 
 
-This tutorial is part of a series, please continue in the next lesson.
+This tutorial is part of a series, please continue in the [next lesson](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%2012%2E2/lesson_12%2E2.md).

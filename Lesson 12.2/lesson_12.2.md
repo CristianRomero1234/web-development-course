@@ -525,4 +525,371 @@ Example code:
             </section>
     </section>
 </section>
+<!--The other code that already exist in your index.html -->
+```
 
+#### Step 22
+
+Let's create the necessary code for persisting the test written to the notes in Browser's LocalStorage.
+
+First, create the `<script>` tag in your index.html:
+
+```html
+<!--The other code that already exist in your index.html -->
+ <fieldset id="notepad-text-area" 
+           contenteditable="true"
+           style="border: 2px solid black; border-radius:15px; min-height: 200px; padding:10px; margin-top:5px;">
+    Some Text
+</fieldset>
+<!-- in your index.html, append the next line -->
+<script></script>
+<!--The other code that already exist in your index.html -->
+```
+#### Step 23
+
+Then, inside the `<script>` tag we will create the following constants:
+
+- `const NOTEPAD_INNERHTML_LOCALSTORAGE_KEY`
+- `const ID_OF_NOTEPAD_TEXT_AREA`
+- `const NOTEPAD_TEXT_AREA_ELEMENT`
+
+*Explanation for you to update the values of the constants by yourself*
+
+- `NOTEPAD_INNERHTML_LOCALSTORAGE_KEY` will be used as the source of truth for the name of LocalStorage key that holds the innerHTML property of the Notepad's text area element.
+
+- `ID_OF_NOTEPAD_TEXT_AREA` will be the id value of Notepad's text area.
+
+- `NOTEPAD_TEXT_AREA_ELEMENT` is used for referencing the HTML elment of Notepad's text area using `ID_OF_NOTEPAD_TEXT_AREA`.
+
+```html
+<!--The other code that already exist in your index.html -->
+ <fieldset id="notepad-text-area" 
+           contenteditable="true"
+           style="border: 2px solid black; border-radius:15px; min-height: 200px; padding:10px; margin-top:5px;">
+    Some Text
+</fieldset>
+
+<script>
+    // in your index.html, append the next line 
+    const NOTEPAD_INNERHTML_LOCALSTORAGE_KEY = 'savedInnerHTML';
+    // in your index.html, append the next line 
+    const ID_OF_NOTEPAD_TEXT_AREA = "notepad-text-area";
+    // in your index.html, append the next line 
+    const NOTEPAD_TEXT_AREA_ELEMENT = document.querySelector("#" + ID_OF_NOTEPAD_TEXT_AREA);
+</script>
+<!--The other code that already exist in your index.html -->
+```
+
+### Step 24
+
+Then we will create some helper methods, "isEmptyString", "retrieveFromLocalStorage", "saveToLocalStorage", "saveToLocalStorageOnlyText" and "cleanLocalStorage".
+
+Let's consider the following code example:
+
+```html
+<!--The other code that already exist in your index.html -->
+ <fieldset id="notepad-text-area" 
+           contenteditable="true"
+           style="border: 2px solid black; border-radius:15px; min-height: 200px; padding:10px; margin-top:5px;">
+    Some Text
+</fieldset>
+
+<script>
+    const NOTEPAD_INNERHTML_LOCALSTORAGE_KEY = 'savedInnerHTML';
+    const ID_OF_NOTEPAD_TEXT_AREA = "notepad-text-area";
+    const NOTEPAD_TEXT_AREA_ELEMENT = document.querySelector("#" + ID_OF_NOTEPAD_TEXT_AREA);
+    // in your index.html, append the next line 
+     let isEmptyString = (stringToCheck) => {
+        // in your index.html, append the next line 
+        return stringToCheck.trim() === '';
+        // in your index.html, append the next line 
+    }
+    // in your index.html, append the next line 
+    let retrieveFromLocalStorage = (key) => {
+     // in your index.html, append the next line 
+        let valueFromLocalStorage = localStorage.getItem(key);
+     // in your index.html, append the next line 
+        return valueFromLocalStorage;
+    // in your index.html, append the next line 
+    };
+    // in your index.html, append the next line 
+    let saveToLocalStorage = (key, value) => {
+        // in your index.html, append the next line 
+        if (key !== undefined && key !== null) {
+            // in your index.html, append the next line 
+            if (!isEmptyString(key) && !isEmptyString(value)) {
+                // in your index.html, append the next line 
+                localStorage.setItem(key, value);
+                // in your index.html, append the next line 
+            }
+            // in your index.html, append the next line 
+        }
+        // in your index.html, append the next line 
+    };
+    // in your index.html, append the next line 
+    let saveToLocalStorageOnlyText = (value) => {
+        // in your index.html, append the next line 
+        if (value.trim() !== '') {
+            // in your index.html, append the next line 
+            saveToLocalStorage('savedInnerText', value);
+            // in your index.html, append the next line 
+        }
+        // in your index.html, append the next line 
+    };
+    // in your index.html, append the next line 
+    let cleanLocalStorage = (key) =>{
+        // in your index.html, append the next line 
+        if(key === null || key === undefined){
+            // in your index.html, append the next line 
+            localStorage.setItem(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY, '');
+            // in your index.html, append the next line 
+        }else{
+            // in your index.html, append the next line 
+            localStorage.setItem(key, '');
+            // in your index.html, append the next line 
+        }
+        // in your index.html, append the next line 
+    };
+</script>
+<!--The other code that already exist in your index.html -->
+```
+
+#### Step 24
+
+Add a "keydown" Event Listener to the document and check the event key is "Enter", in that case we want to save the contents of notepad to localStorage.
+
+```html
+<!--The other code that already exist in your index.html -->
+ <fieldset id="notepad-text-area" 
+           contenteditable="true"
+           style="border: 2px solid black; border-radius:15px; min-height: 200px; padding:10px; margin-top:5px;">
+    Some Text
+</fieldset>
+
+<script>
+    const NOTEPAD_INNERHTML_LOCALSTORAGE_KEY = 'savedInnerHTML';
+    const ID_OF_NOTEPAD_TEXT_AREA = "notepad-text-area";
+    const NOTEPAD_TEXT_AREA_ELEMENT = document.querySelector("#" + ID_OF_NOTEPAD_TEXT_AREA);
+     let isEmptyString = (stringToCheck) => {
+        return stringToCheck.trim() === '';
+    }
+    let retrieveFromLocalStorage = (key) => {
+        let valueFromLocalStorage = localStorage.getItem(key);
+        return valueFromLocalStorage;
+    };
+    let saveToLocalStorage = (key, value) => {
+        if (key !== undefined && key !== null) {
+            if (!isEmptyString(key) && !isEmptyString(value)) {
+                localStorage.setItem(key, value);
+            }
+        }
+    };
+    let saveToLocalStorageOnlyText = (value) => {
+        if (value.trim() !== '') {
+            saveToLocalStorage('savedInnerText', value);
+        }
+    };
+    let cleanLocalStorage = (key) =>{
+        if(key === null || key === undefined){
+            localStorage.setItem(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY, '');
+        }else{
+            localStorage.setItem(key, '');
+        }
+    };
+     // in your index.html, append the next line 
+    document.addEventListener("keydown", function (event) {
+         // in your index.html, append the next line 
+        if (event.key === "Enter") {
+             // in your index.html, append the next line 
+            saveToLocalStorageOnlyText(NOTEPAD_TEXT_AREA_ELEMENT.innerText);
+             // in your index.html, append the next line 
+            saveToLocalStorage(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY, NOTEPAD_TEXT_AREA_ELEMENT.innerHTML);
+             // in your index.html, append the next line 
+            console.log("Saving to localStorage because Enter was Pressed")
+        }
+    }); 
+</script>
+<!--The other code that already exist in your index.html -->
+```
+#### Step 25
+
+Update the text shown to user in the notepad field.
+
+Add the following line inside the `<script>` tag:
+
+```javascript
+NOTEPAD_TEXT_AREA_ELEMENT.innerHTML = isEmptyString(retrieveFromLocalStorage('savedInnerHTML'))  === true ? "Press enter to save to Browser's local storage" :  localStorage.getItem('savedInnerHTML');
+```
+Then your index.html file should look like: 
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>App my Studies tool: Notepad</title>
+</head>
+
+<body>
+    <!-- A grey horizontal navbar that becomes vertical on small screens -->
+    <nav class="navbar navbar-expand-sm bg-light">
+        <section class="container-fluid">
+            <!-- Links -->
+            <ul class="navbar-nav">
+                <li class="nav-item" id="dropdown">
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Google Docs</a></li>
+                        <li><a class="dropdown-item" href="#">Online PDF editor</a></li>
+                        <li><a class="dropdown-item" href="#">Notepad</a></li>
+                    </ul>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Text Management
+                        Tools</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pomodoro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">To-Do List</a>
+                </li>
+                <li class="nav-item">
+                    <a target="_blank" href="https://www.google.com/">
+                        <img alt="Google"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/272px-Google_2015_logo.svg.png"
+                            style=" margin-left: 3px; max-height: 40px;" />
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="https://calendar.google.com/calendar">
+                        <img alt="Google Calendar"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Calendar_icon_%282020%29.svg/2048px-Google_Calendar_icon_%282020%29.svg.png"
+                            style="max-height: 40px ; margin-left: 3px;" height="75" />
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </nav>
+    <!--Content area of "Studies tool" Web page-->
+    <section class="accordion" id="accordion-parent-container">
+        <section class="accordion-item" id="AccItemOne">
+            <h2 class="accordion-header" id="headingAccItemOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    Pomodoro
+                </button>
+            </h2>
+            <section id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingAccItemOne"
+                data-bs-parent="#accordion-parent-container">
+                <section class="accordion-body"> POMODORO: YET TO IMPLEMENT</section>
+            </section>
+        </section>
+        <section class="accordion-item" id="AccItemTwo">
+            <h2 class="accordion-header" id="headingAccItemTwo">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    To-Do List
+                </button>
+            </h2>
+            <section id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingAccItemTwo"
+                data-bs-parent="#accordion-parent-container">
+                <section class="accordion-body"> To-Do List: YET TO IMPLEMENT</section>
+            </section>
+        </section>
+        <section class="accordion-item" id="AccItemThree">
+            <h2 class="accordion-header" id="headingAccItemThree">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                    aria-expanded="true" aria-controls="collapseThree">
+                    Notepad
+                </button>
+            </h2>
+            <section id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingAccItemThree"
+                data-bs-parent="#accordion-parent-container">
+                <section class="accordion-body">
+                    <form style="padding: 5px;">
+                        <fieldset id="notepad-toolbar">
+                            <button type="button" class="btn btn-light"
+                                onclick="document.execCommand('italic',false,null);" title="Italicize Highlighted Text">
+                                <i>I</i>
+                            </button>
+                            <button type="button" class="btn btn-light"
+                                onclick="document.execCommand( 'bold',false,null);" title="Bold Highlighted Text">
+                                <b>B</b>
+                            </button>
+                            <button type="button" class="btn btn-light"
+                                onclick="document.execCommand( 'underline',false,null);"
+                                title='Underline Highlighted Text'>
+                                <u>U</u>
+                            </button>
+                            <section class="btn-group" role="group">
+                                <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Other options
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                    <li><a class="dropdown-item" href="#">Download file</a></li>
+                                    <li><a class="dropdown-item" href="#">Save to LocalStorage</a></li>
+                                </ul>
+                            </section>
+                        </fieldset>
+                        <fieldset id="notepad-text-area" contenteditable="true"
+                            style="border: 2px solid black; border-radius:15px; min-height: 200px; padding:10px; margin-top:5px;">
+                            Some Text
+                        </fieldset>
+                        <script>
+                            const NOTEPAD_INNERHTML_LOCALSTORAGE_KEY = 'savedInnerHTML';
+                            const ID_OF_NOTEPAD_TEXT_AREA = "notepad-text-area";
+                            const NOTEPAD_TEXT_AREA_ELEMENT = document.querySelector("#" + ID_OF_NOTEPAD_TEXT_AREA);
+                            let isEmptyString = (stringToCheck) => {
+                                return stringToCheck.trim() === '';
+                            }
+                            let retrieveFromLocalStorage = (key) => {
+                                let valueFromLocalStorage = localStorage.getItem(key);
+                                return valueFromLocalStorage;
+                            }
+                            let saveToLocalStorage = (key, value) => {
+                                if (key !== undefined && key !== null) {
+                                    if (!isEmptyString(key) && !isEmptyString(value)) {
+                                        localStorage.setItem(key, value);
+                                    }
+                                }
+                            };
+                            let saveToLocalStorageOnlyText = (value) => {
+                                if (value.trim() !== '') {
+                                    saveToLocalStorage('savedInnerText', value);
+                                }
+                            };
+                            document.addEventListener("keydown", function (event) {
+                                if (event.key === "Enter") {
+                                    saveToLocalStorageOnlyText(NOTEPAD_TEXT_AREA_ELEMENT.innerText)
+                                    saveToLocalStorage(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY, NOTEPAD_TEXT_AREA_ELEMENT.innerHTML);
+                                    console.log("Saving to localStorage because Enter was Pressed")
+                                }
+                            });                            
+                            let cleanLocalStorage = (key) =>{
+                                if(key === null || key === undefined){
+                                    localStorage.setItem(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY, '');
+                                }else{
+                                    localStorage.setItem(key, '');
+                                }
+                            };
+                            NOTEPAD_TEXT_AREA_ELEMENT.innerHTML = isEmptyString(retrieveFromLocalStorage('savedInnerHTML'))  === true ? "Press enter to save to Browser's local storage" : localStorage.getItem('savedInnerHTML');
+                        </script>
+                    </form>
+                </section>
+            </section>
+        </section>
+    </section>
+</body>
+</html>
+```
+
+**Optional:** Create a new button for clearing the storage.
+
+You should open your index.html file in the Browser and check the notepad.
+---
+
+This tutorial is part of a series, please continue in the [next lesson]
