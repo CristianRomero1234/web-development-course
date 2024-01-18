@@ -278,7 +278,7 @@ The index.html file at the end of this lesson, should look like:
 </body>
 </html>
 ``` 
-Save the code toy yor index.html file and open it in your browser.
+Save the code to your index.html file and open it in the browser.
 
 --- 
 
