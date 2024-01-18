@@ -19,11 +19,12 @@ Let's jump in!
 
 ### Steps (continuation)
 
-#### Step 5
 
 The contents of our web page will be presented inside of a Bootstrap [accordion](https://getbootstrap.com/docs/5.2/components/accordion/).
 
 We will add in index.html, the necessary code for this. 
+
+#### Step 5
 
 Add a `<section>` with `class` "accordion".
 
@@ -34,9 +35,12 @@ Add a `<section>` with `class` "accordion".
 <section class="accordion" id="accordion-parent-container"></section>
 <!--The other code that already exist in your index.html -->
 ```
-Inside the `<section>` from previous example let's append another `<section>` tag, with class "accordion-item"
 
-Each of the containers tags for the accordion items, are going to use the Bootstrap class "accordion-item".
+#### Step 6
+
+Inside the `<section>` from previous step. append another `<section>` tag, with class "accordion-item".
+
+**Each of the containers tags for the accordion items, are going to use the Bootstrap class "accordion-item".**
 
 Example Code:
 
@@ -48,6 +52,7 @@ Example Code:
 </section>
 <!--The other code that already exist in your index.html -->
 ```
+#### Step 7
 
 To display the title of our accordion item, create a `<h2>` tag inside.
 
@@ -68,6 +73,9 @@ Example Code:
 </section>
 <!--The other code that already exist in your index.html -->
 ```
+
+#### Step 8
+
 Inside of `<h2>` create a `<button>` tag with the following attributes:
 
 - `class="accordion-button"` 
@@ -103,6 +111,8 @@ Example Code:
 ```
 Notice that the attributes `data-bs-parent` need to hold the `id` of `<section class="accordion" id="....` and `aria-labelledby` need to hold the `id` of ` <h2 class="accordion-header" id="....`.
 
+#### Step 9
+
 Out of "headingOne" `<h2>` Create a new `<section>`. 
 
 For the example we will use the following attributes:
@@ -113,7 +123,6 @@ For the example we will use the following attributes:
 - `data-bs-parent="#accordion-parent-container"`
 
 Example Code:
-
 
 ```html
 <!--The other code that already exist in your index.html -->
@@ -136,6 +145,8 @@ Example Code:
 </section>
 <!--The other code that already exist in your index.html -->
 ```
+#### Step 10
+
 Inside, create a new `<section>` tag with class "accordion-body", in the example code, this is where the Pomodoro App will be displayed.
 
 Example Code:
@@ -163,9 +174,13 @@ Example Code:
 </section>
 <!--The other code that already exist in your index.html -->
 ```
+#### Step 11
+
 We will nend to append two more `<section class="accordion-item">` to `<section class="accordion" id="accordion-parent-container">`, to be used as containers for "To-Do List" and "Notepad".
 
 With this, we finish the basic layout of our Studies tools app. 
+
+---
 
 The index.html file at the end of this lesson, should look like: 
 
