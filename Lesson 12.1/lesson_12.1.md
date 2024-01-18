@@ -277,7 +277,9 @@ The index.html file at the end of this lesson, should look like:
     </section>
 </body>
 </html>
-```
+``` 
+Save the code toy yor index.html file and open it in your browser.
+
 --- 
 
 This tutorial is part of a series, please continue in the next lesson.

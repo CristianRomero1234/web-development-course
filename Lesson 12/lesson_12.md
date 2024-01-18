@@ -396,5 +396,5 @@ The whole index.html ile should now look similar to this:
 
 --- 
 
-This tutorial is part of a series, please continue in the next lesson.
+This tutorial is part of a series, please continue in the [next lesson](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%2012%2E1/lesson_12%2E1.md).
 
