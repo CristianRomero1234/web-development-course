@@ -99,8 +99,7 @@
                                 title='Underline Highlighted Text'>
                                 <u>U</u>
                             </button>
-                            <button type="button" class="btn btn-light"
-                                onclick="cleanLocalStorage()"
+                            <button type="button" class="btn btn-light" onclick="cleanLocalStorage()"
                                 title='Clear Local Storage'>
                                 <b>Clear Local Storage</b>
                             </button>
@@ -110,8 +109,10 @@
                                     Other options
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                    <li><a class="dropdown-item" href="#">Download file</a></li>
-                                    <li><a class="dropdown-item" href="#">Save to LocalStorage</a></li>
+                                    <li><a class="dropdown-item" onclick="downloadAsAFile()" href="#">Download file</a>
+                                    </li>
+                                    <li><a class="dropdown-item" onclick="updateLocalStorageWithNotePadContents();" href="#">Save to
+                                            LocalStorage</a></li>
                                 </ul>
                             </section>
                         </fieldset>
@@ -120,47 +121,213 @@
                             Some Text
                         </fieldset>
                         <script>
+                            /*localStorage Keys*/
+                            const NOTEPAD_INNERTEXT_LOCALSTORAGE_KEY = 'savedInnerText';
                             const NOTEPAD_INNERHTML_LOCALSTORAGE_KEY = 'savedInnerHTML';
+
+                            /*Notepad element related constants*/
                             const ID_OF_NOTEPAD_TEXT_AREA = "notepad-text-area";
                             const NOTEPAD_TEXT_AREA_ELEMENT = document.querySelector("#" + ID_OF_NOTEPAD_TEXT_AREA);
+                            const NOTEPAD_TEXT_AREA_USAGE_HINT = "Write your notes, then Press enter to save to Browser's local storage";
+
+                            /*Download Modal related constants*/
+                            const MODAL_ID = "modal";
+                            const MODAL_TITLE = "Save as file";
+                            const MODAL_DOWNLOAD_BUTTON_TEXT = "Download file";
+                            const MODAL_CLOSE_BUTTON_TEXT = "Close";
+                            const MODAL_STYLES_STRING = "border: none; border-radius:25px; padding: 16px; padding: 30px; min-height: 300px; width: 350px; background-color: #fff;";
+                            const MODAL_DROPDOWN_LABEL_INNERTEXT = "File extension";
+                            const MODAL_DROPDOWN_ID = "fileExtensions";
+                            const MODAL_DROPDOWN_INPUT_PLACEHOLDER = "File name example: studies_assistant_notes";
+                            
+                            /*Messages to be displayed*/
+                            const MESSAGE_NO_CONTENTS_DOWNLOAD = "No contents to download";
+                            const MESSAGE_NOTHING_WAS_SAVED = "Nothing was saved.";
+                            const MESSAGE_ENTER_WAS_PRESSED = "Saving to localStorage because Enter was Pressed";
+                            const MESSAGE_MODAL_DROPDOWN_VALUE_EMPTY = "Dropdown in modal element in HTML value is empty";
+
+                            /*Othe utility constants*/
+                            const EMPTY_STRING = '';
+                            const BOOLEAN_TRUE = true;
+                            const BOOLEAN_FALSE = false;
+                            const AS_PLAIN_TEXT_TYPE = 'text/plain';
+                            const AS_HTML_TYPE = 'text/html';
+                            const DEFAULT_FILENAME = 'studies_assistant_notes';
+                            const TXT_EXTENSION = 'txt';
+                            const HTML_EXTENSION = 'html';
+
+                            /* General Notepad Supporting arrow functions area*/
+
+                            let isUndefinedOrNull = (objectToCheck) => {
+                                if (objectToCheck === undefined || objectToCheck === null) {
+                                    return BOOLEAN_TRUE;
+                                }
+                                return BOOLEAN_FALSE;
+                                //returns boolean
+                            };
                             let isEmptyString = (stringToCheck) => {
-                                return stringToCheck.trim() === '';
-                            }
+                                return (isUndefinedOrNull(stringToCheck) ? BOOLEAN_TRUE : (stringToCheck.trim() === EMPTY_STRING));
+                                //returns boolean
+                            };
                             let retrieveFromLocalStorage = (key) => {
-                                let valueFromLocalStorage = localStorage.getItem(key);
-                                return valueFromLocalStorage;
-                            }
+                                return isEmptyString(key) ? EMPTY_STRING : localStorage.getItem(key);
+                                //returns string
+                            };
                             let saveToLocalStorage = (key, value) => {
-                                if (key !== undefined && key !== null) {
-                                    if (!isEmptyString(key) && !isEmptyString(value)) {
-                                        localStorage.setItem(key, value);
-                                    }
+                                if (isEmptyString(key) || isEmptyString(value)) {
+                                    alert(MESSAGE_NOTHING_WAS_SAVED);
+                                } else {
+                                    localStorage.setItem(key, value);
                                 }
+                                // returns "void"
                             };
-                            let saveToLocalStorageOnlyText = (value) => {
-                                if (value.trim() !== '') {
-                                    saveToLocalStorage('savedInnerText', value);
+                            let cleanLocalStorage = (key) => {
+                                if (isEmptyString(key)) {
+                                    cleanLocalStorage(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY);
+                                    cleanLocalStorage(NOTEPAD_INNERTEXT_LOCALSTORAGE_KEY);
+                                    return;
                                 }
+                                saveToLocalStorage(key, EMPTY_STRING);
+                                // returns "void"
                             };
+                            let triggerDownload = (fileName, fileExtension, fileContent) => {
+                                if (isEmptyString(fileName)) {
+                                    fileName = DEFAULT_FILENAME;
+                                }
+                                if (isEmptyString(fileExtension)) {
+                                    fileExtension = HTML_EXTENSION;
+                                }
+                                // Define MIME type for blob
+                                const MIME_Type = fileExtension === TXT_EXTENSION ? AS_PLAIN_TEXT_TYPE : AS_HTML_TYPE;
+
+                                // Create a Blob containing the text data
+                                const blob = new Blob([fileContent], { type: MIME_Type });
+
+                                // Create a link element
+                                const downloadLink = document.createElement('a');
+
+                                // Set the link's href attribute to a URL representing the Blob
+                                downloadLink.href = URL.createObjectURL(blob);
+
+                                // Set the download attribute with the desired file name
+                                downloadLink.download = `${fileName}.${fileExtension}`;
+
+                                // Append the link to the document
+                                document.body.appendChild(downloadLink);
+
+                                // Trigger a click on the link to initiate the download
+                                downloadLink.click();
+                            };
+                            let startDownloadAsHTMLFile = (filename) => {
+                                if (isEmptyString(retrieveFromLocalStorage(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY)) && isEmptyString(retrieveFromLocalStorage(NOTEPAD_INNERTEXT_LOCALSTORAGE_KEY))) {
+                                    alert(MESSAGE_NO_CONTENTS_DOWNLOAD);
+                                    return;
+                                }
+                                let htmlFormattedTextValueFromLocalStorage = retrieveFromLocalStorage(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY);
+                                triggerDownload(filename, HTML_EXTENSION, htmlFormattedTextValueFromLocalStorage);
+                            }
+                            let downloadFileAsTxt = (filename) => {
+                                if (isEmptyString(retrieveFromLocalStorage(NOTEPAD_INNERTEXT_LOCALSTORAGE_KEY))) {
+                                    alert(MESSAGE_NO_CONTENTS_DOWNLOAD);
+                                    return;
+                                }
+                                let plainTextValueFromLocalStorage = retrieveFromLocalStorage(NOTEPAD_INNERTEXT_LOCALSTORAGE_KEY);
+                                triggerDownload(filename, TXT_EXTENSION, plainTextValueFromLocalStorage);
+                            }
+                            let handleDownloadRequest = (modalElement, modalDropdownId, modalFileNameInputId) => {
+                                let dropdownMenuInModal = document.getElementById(modalDropdownId);
+                                if (dropdownMenuInModal === undefined || isEmptyString(dropdownMenuInModal.value)) {
+                                    alert(MESSAGE_MODAL_DROPDOWN_VALUE_EMPTY);
+                                    return;
+                                }
+                                let filenameInput = document.getElementById(modalFileNameInputId);
+                                let filename = isEmptyString(filenameInput.value) ? DEFAULT_FILENAME :  filenameInput.value;
+                                dropdownMenuInModal.value === TXT_EXTENSION ? downloadFileAsTxt(filename) : startDownloadAsHTMLFile(filename);
+                                modalElement.close();
+                                window.location.reload();
+                            }
+                            /* Notepad's Download Modal specific Supporting arrow functions area*/
+                            let createModalTitle = () => {
+                                let modalTitle = document.createElement('h2');
+                                modalTitle.innerText = MODAL_TITLE;
+                                return modalTitle;
+                            }
+                            let createDropdownMenuOption = (id, useIdForValueAndInnerText) => {
+                                let modalDropdownOption = document.createElement('option');
+                                modalDropdownOption.id = id;
+                                if (useIdForValueAndInnerText) {
+                                    modalDropdownOption.value = id;
+                                    modalDropdownOption.innerText = id;
+                                }
+                                return modalDropdownOption;
+                            }
+                            let createModalDropdownMenu = () => {
+                                let modalDropdown = document.createElement('select');
+                                let modalDropdownOptionHTML = createDropdownMenuOption(HTML_EXTENSION, BOOLEAN_TRUE);
+                                let modalDropdownOptionUnformattedText = createDropdownMenuOption(TXT_EXTENSION, BOOLEAN_TRUE);
+                                modalDropdown.appendChild(modalDropdownOptionHTML);
+                                modalDropdown.appendChild(modalDropdownOptionUnformattedText);
+                                modalDropdown.name = MODAL_DROPDOWN_ID;
+                                modalDropdown.id = MODAL_DROPDOWN_ID;
+                                return modalDropdown;
+                            }
+                            let createDropdownMenuLabel = () => {
+                                let modalDropdownLabel = document.createElement('label');
+                                modalDropdownLabel.for = MODAL_DROPDOWN_ID;
+                                modalDropdownLabel.innerText = MODAL_DROPDOWN_LABEL_INNERTEXT;
+                                return modalDropdownLabel;
+                            }
+                            let createModalButton = (innerTextValue, onClickFunction) => {
+                                let modalButton = document.createElement('button');
+                                modalButton.onclick = onClickFunction;
+                                modalButton.innerText = innerTextValue;
+                                modalButton.classList.add("btn");
+                                return modalButton;
+                            }
+                            let createModalCloseButton = (modal) => {
+                                let modalCloseButton = createModalButton(MODAL_CLOSE_BUTTON_TEXT, () => { modal.close(); });
+                                return modalCloseButton;
+                            }
+                            let createModalDownloadButton = () => {
+                                let modalDownloadButton = createModalButton(MODAL_DOWNLOAD_BUTTON_TEXT, () => { isEmptyString(retrieveFromLocalStorage(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY)) ? alert(MESSAGE_NO_CONTENTS_DOWNLOAD) : handleDownloadRequest(modal, "fileExtensions", "fileNameUser") });
+                                return modalDownloadButton;
+                            }
+                            let createModalFileNameInput = () => {
+                                let modalFileNameInput = document.createElement('input');
+                                modalFileNameInput.classList.add("form-control");
+                                modalFileNameInput.type = "text";
+                                modalFileNameInput.id = "fileNameUser";
+                                modalFileNameInput.placeholder = MODAL_DROPDOWN_INPUT_PLACEHOLDER;
+                                return modalFileNameInput;
+                            }
+                            let createModal = () => {
+                                let modal = document.createElement('dialog');
+                                modal.id = MODAL_ID;
+                                modal.style = MODAL_STYLES_STRING;
+                                modal.appendChild(createModalTitle());
+                                modal.appendChild(createModalFileNameInput());
+                                modal.appendChild(createDropdownMenuLabel());
+                                modal.appendChild(createModalDropdownMenu());
+                                modal.appendChild(createModalDownloadButton());
+                                modal.appendChild(createModalCloseButton(modal))
+                                document.body.appendChild(modal)
+                                return modal;
+                            }
+                            let downloadAsAFile = () => {
+                                let dialog = createModal();
+                                return dialog.showModal();
+                            }
+                            let updateLocalStorageWithNotePadContents = () => {
+                                saveToLocalStorage(NOTEPAD_INNERTEXT_LOCALSTORAGE_KEY, NOTEPAD_TEXT_AREA_ELEMENT.innerText);
+                                saveToLocalStorage(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY, NOTEPAD_TEXT_AREA_ELEMENT.innerHTML);
+                            }
+                            NOTEPAD_TEXT_AREA_ELEMENT.innerHTML = isEmptyString(retrieveFromLocalStorage(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY)) ? NOTEPAD_TEXT_AREA_USAGE_HINT : retrieveFromLocalStorage(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY);
                             document.addEventListener("keydown", function (event) {
                                 if (event.key === "Enter") {
-                                    saveToLocalStorageOnlyText(NOTEPAD_TEXT_AREA_ELEMENT.innerText)
-                                    saveToLocalStorage(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY, NOTEPAD_TEXT_AREA_ELEMENT.innerHTML);
-                                    console.log("Saving to localStorage because Enter was Pressed")
+                                    updateLocalStorageWithNotePadContents();
+                                    console.log(MESSAGE_ENTER_WAS_PRESSED);
                                 }
-                            });                            
-                            let cleanLocalStorage = (key) =>{
-                                if(key === null || key === undefined){
-                                    localStorage.setItem(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY, '');
-                                }else{
-                                    localStorage.setItem(key, '');
-                                }
-                            };
-
-                            NOTEPAD_TEXT_AREA_ELEMENT.innerHTML = isEmptyString(retrieveFromLocalStorage('savedInnerHTML'))  === true ? "Press enter to save to Browser's local storage" : localStorage.getItem('savedInnerHTML');
-
-                            //let fieldset_text_area_innerText = FIELDSET_TEXT_AREA.innerText;
-
+                            });
                         </script>
                     </form>
                 </section>

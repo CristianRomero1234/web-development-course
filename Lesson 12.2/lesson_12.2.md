@@ -886,6 +886,13 @@ Then your index.html file should look like:
 </body>
 </html>
 ```
+Your next tasks, regarding the Notepad are:
+
+1. Implement a Javascript function, to download contents of Notepad as a file, ask your user for the file name and proceed to download (using the user-provided file name).
+    1.1. use the `onclick` attribute of `<li><a class="dropdown-item" href="#">Download file</a></li>` to call the function you created "to download contents of Notepad as a file".
+2. Create a button `<button>` or link `<a>`for clearing Browser's localStorage (make use of the example code for `let cleanLocalStorage` as the `onclick` attribute).
+3
+
 
 **Optional:** Create a new button for clearing the storage.
 
