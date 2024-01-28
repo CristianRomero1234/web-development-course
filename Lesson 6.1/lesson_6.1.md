@@ -118,11 +118,11 @@ As apprentices, we need to understand, that we will make mistakes.
 
 The value of mistakes is that we eiher learn from them or they keep giving us chances to learn from them -until we eventually do- (quitting before success shouldn't be an option, so we should treat quitting as a mistake as well).
 
-Pseudo code is not always the best tool to design or describe software applications, for othe usecases UML diagrams, Flowcharts, and many more can be used. 
+Pseudo code is not always the best tool to design or describe software applications, for other use cases, "UML diagrams", "Flowcharts", and many more can are used. 
 
-In professional Web development usually the Front-end design is provided to the developer using software tools like canva or figma, and for the Back-end UML diagrams are used for designing the database tables and their relationships, the full proyect is designed as flowcharts or "user stories" illustrating the interactions between users and software.
+In professional Web development usually the Front-end design is provided to the developer using software tools like canva or figma, and for the Back-end UML diagrams are used for designing the database tables and their relationships, the full proyect is then, presented as flowcharts or "user stories" illustrating the interactions between users and software.
 
-Your task is to use your knowledge and skills to "define your own recipe for the calculator app", then translate it to HTML+CSS+JavaScript, make corrections to your Algorithm so it describes the necessary code for running your own "Calculator App" in the browser.
+Your task is to use your knowledge and skills to "define your own recipe" for the calculator app, then translate it to HTML, CSS and JavaScript, make corrections to your Algorithm so it describes the necessary code for running your own "Calculator App" in the browser.
 
 Good Luck! C.R 
 
