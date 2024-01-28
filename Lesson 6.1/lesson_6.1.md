@@ -81,7 +81,7 @@ Please notice the "blocks" for declaring "constants", "variables" and "methods".
 
 This doesn't look like JavaScript code, but is a good approach to solving our task. 
 
-#####Explanation
+##### Explanation
 Let's consider the following block: 
 
 ``` 
