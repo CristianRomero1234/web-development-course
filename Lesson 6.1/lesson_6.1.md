@@ -116,7 +116,7 @@ For me it means that when we want to be efficcient and succesful in a given task
 
 As apprentices, we need to understand, that we will make mistakes. 
 
-The value of mistakes is that we learn from them or they give us chances to learn from them until we do (quitting before success shouldn't be an option, so we should treat quitting as a mistake too).
+The value of mistakes is that we eiher learn from them or they keep giving us chances to learn from them -until we eventually do- (quitting before success shouldn't be an option, so we should treat quitting as a mistake as well).
 
 Pseudo code is not always the best tool to design or describe software applications, for othe usecases UML diagrams, Flowcharts, and many more can be used. 
 
