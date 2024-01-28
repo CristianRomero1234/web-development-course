@@ -262,7 +262,7 @@
                             fileName = isEmptyString(fileName) ? DEFAULT_FILENAME : fileName.trim();
                             fileExtension = isEmptyString(fileExtension) ? 'html' : fileExtension.trim();
                             // Define MIME type for blob
-                            const MIME_Type = fileExtension === "txts" ? MIME_TEXT_PLAIN_TYPE : MIME_TEXT_HTML_TYPE;
+                            const MIME_Type = fileExtension === "txt" ? MIME_TEXT_PLAIN_TYPE : MIME_TEXT_HTML_TYPE;
                             // Create a Blob containing the text data
                             const blob = new Blob([fileContent], { type: MIME_Type });
                             // Create a link element
