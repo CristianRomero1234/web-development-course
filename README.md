@@ -17,7 +17,7 @@
 - [Lesson 12](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%2012/lesson_12.md): *HTML + Bootstrap*. **Studies Assistant Web App: How to create a Navbar**
   - [Lesson 12.1](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%2012%2E1/lesson_12%2E1.md): *HTML + Bootstrap*. **Studies Assistant Web App: Accordion.**
   -  [Lesson 12.2](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%2012%2E2/lesson_12%2E2.md): *HTML + CSS + JavaScript + Bootstrap*. **Studies Assistant Web App: How to create a Notepad.**
-  - Lesson 12.3:*HTML + CSS + JavaScript + Bootstrap*. **Studies Assistant Web App: How to create a To-Do List.**
+  - [Lesson 12.3](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%2012%2E3/lesson_12%2E3.md):*HTML + CSS + JavaScript + Bootstrap*. **Studies Assistant Web App: How to create a To-Do List.**
   - Lesson 12.4:*HTML + CSS + JavaScript + Bootstrap*. **Studies Assistant Web App: How to create a Pomodoro timer.**
 - Lesson 13:*HTML + CSS + JavaScript + React.js CDN*. **How to create a Blog (Front end).**
 - Lesson 14:*HTML + CSS + JavaScript + React.js CDN*. **How to create a Basic Ecommerce "Articles Section".**
