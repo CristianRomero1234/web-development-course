@@ -8,6 +8,7 @@
 - [HTML Code Compare](https://onlinetextcompare.com/html)
 - The original version of the [Studies Assistant Web App tutorial](https://cristianromero1234.github.io/App_asistente_estudio/)
 - [LocalStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+- [codepen created to exemplify the To Do List Inline script reusability](https://codepen.io/cromerolo2/pen/YzgJZxw)
 
 ## Assumptions
 
