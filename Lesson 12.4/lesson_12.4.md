@@ -724,7 +724,7 @@ Now we should have an index.html file that looks like this:
                             style="border: 2px solid black; border-radius:15px; min-height: 200px; padding:10px; margin-top:5px;">
                             Some Text
                         </fieldset>
-                        <script>
+                         <script>
                             const NOTEPAD_INNERHTML_LOCALSTORAGE_KEY = 'savedInnerHTML';
                             const NOTEPAD_INNERTEXT_LOCALSTORAGE_KEY = 'savedInnerTEXT';
                             const ID_OF_NOTEPAD_TEXT_AREA = "notepad-text-area";
@@ -800,32 +800,16 @@ Now we should have an index.html file that looks like this:
                                 isEmptyString(localStorage.getItem(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY)) ? alert("No contents to download")
                                     : triggerDownload(filename, "html", localStorage.getItem(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY));
                             };
-                            const startDownloadAsTxt = (filename) => {
-                                isEmptyString(localStorage.getItem(NOTEPAD_INNERTEXT_LOCALSTORAGE_KEY)) ? alert("No contents to download")
-                                    : triggerDownload(filename, "txt", localStorage.getItem(NOTEPAD_INNERTEXT_LOCALSTORAGE_KEY));
-                            };
-                            const updateLocalStoragewithTextAndHTMLFromElement = (elementId, localStorageKeyText, localStorageKeyHTML) => {
-                                let element = querySelectorId(elementId);
-                                saveToLocalStorage(localStorageKeyText, element.innerText);
-                                saveToLocalStorage(localStorageKeyHTML, element.innerHTML);
-                            };
-                            const updateLocalStorageWithNotePadContents = () => {
-                                updateLocalStoragewithTextAndHTMLFromElement(ID_OF_NOTEPAD_TEXT_AREA, NOTEPAD_INNERTEXT_LOCALSTORAGE_KEY, NOTEPAD_INNERHTML_LOCALSTORAGE_KEY);
-                            };
-                            const handleDownloadFromLocalstorageRequest = (modalElement, modalDropdownId, modalFileNameInputId) => {
-                                updateLocalStorageWithNotePadContents();
-                                let dropdownMenuInModal = document.getElementById(modalDropdownId);
-                                if (isEmptyString(dropdownMenuInModal.value)) {
-                                    alert("Dropdown in modal element in HTML value is empty");
-                                    return;
-                                }
-                                let filenameInput = document.getElementById(modalFileNameInputId);
-                                let filename = isEmptyString(filenameInput.value) ? DEFAULT_FILENAME : filenameInput.value.trim();
-                                dropdownMenuInModal.value === "txt" ? startDownloadAsTxt(filename) : startDownloadAsHTMLFile(filename);
-                                window.location.reload();
-                            };
 
-                            NOTEPAD_TEXT_AREA_ELEMENT.innerHTML = isEmptyString(retrieveFromLocalStorage('savedInnerHTML')) === true ? "Press enter to save to Browser's local storage" : localStorage.getItem('savedInnerHTML');
+
+
+                            function runNotepad() {
+                                NOTEPAD_TEXT_AREA_ELEMENT.innerHTML = isEmptyString(retrieveFromLocalStorage('savedInnerHTML')) === true ? "Press enter to save to Browser's local storage" : localStorage.getItem('savedInnerHTML');
+                                listenForEnterOrSpace();
+                            }
+
+                            runNotepad();
+
                         </script>
                     </form>
                 </section>
