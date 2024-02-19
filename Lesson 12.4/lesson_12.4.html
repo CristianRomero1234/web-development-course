@@ -66,31 +66,41 @@
                 <section class="accordion-body" id="pomodoroFeatureContainer">
                     <section id="pomodoro-app">
                         <section id="pomodoroCounterContainer">
-                          <section id="pomodoroCounterTimerContainer">
-                            <section id="time">
-                              <span id="minutes">25</span>
-                              <span id="colon">:</span>
-                              <span id="seconds">00</span>
+                            <section id="pomodoroCounterTimerContainer">
+                                <section id="time">
+                                    <span id="minutes">25</span>
+                                    <span id="colon">:</span>
+                                    <span id="seconds">00</span>
+                                </section>
+                                <section id="filler"></section>
                             </section>
-                            <section id="filler"></section>
-                          </section>
-                
-                          <section id="buttons">
-                            <button id="work">Work</button>
-                            <button id="shortBreak">Short Break</button>
-                            <button id="longBreak">Long Break</button>
-                            <button id="stop">Stop</button>
-                          </section>
+
+                            <section id="buttons">
+                                <button id="work">Start Timer</button>
+                                <button id="shortBreak">Short Break</button>
+                                <button id="longBreak">Long Break</button>
+                                <button id="stop">Stop Timer</button>
+                            </section>
                         </section>
-                      </section>
+                    </section>
                     <script>
                         const POMODORO_FEATURE_PARENT_ELEMENT_ID = "pomodoroFeatureContainer";
                         const POMODORO_FEATURE_PARENT_ELEMENT = document.getElementById(POMODORO_FEATURE_PARENT_ELEMENT_ID);
+                        const DOM_MINUTES_ID = "minutes";
+                        const DOM_SECONDS_ID = "seconds";
+                        const DOM_BUTTON_WORK_ID = "work";
+                        const DOM_BUTTON_SHORTBREAK_ID = "shortBreak";
+                        const DOM_BUTTON_LONGBREAK_ID = "longBreak";
+                        const DOM_BUTTON_STOPNRESTART_ID = "stop";
+                        const DOM_BUTTON_PAUSE_ID = "pause";
+                        const DOM_MINUTES_ELEMENT = document.querySelector(`#${DOM_MINUTES_ID}`);
+                        const DOM_SECONDS_ELEMENT = document.querySelector(`#${DOM_SECONDS_ID}`);
+                        let WINDOW_INTERVAL = null;
 
-                        function setPomodoroAppStyles() {
+                        function renderPomodoroCounter() {
                             let pomodoroAppSection = document.getElementById("pomodoro-app");
                             pomodoroAppSection.style = "display: flex;flex-direction: column; flex-wrap:wrap; justify-content:center; align-items:center;";
-                            
+
 
                             let pomodoroCounterContainer = document.getElementById("pomodoroCounterContainer");
                             pomodoroCounterContainer.style = "border: 1px solid #333; border-radius: 20px; width: 400px; margin: 20px auto; padding: 20px; text-align: center; background: #333;";
@@ -101,12 +111,12 @@
                             let time = document.getElementById("time");
                             time.style = " margin-top: 70px;z-index: 1;position: relative;"
 
-                          
+
 
                             let filler = document.getElementById("filler");
                             filler.style = "background: #ddffcc;height: 0px;width: 200px;position: absolute;bottom: 0;"
 
-                           
+
 
                             let pomodoroCounterButtonsContainer = document.getElementById("buttons");
 
@@ -141,11 +151,94 @@
                             pause.style = buttonsSharedStyle;
 
                             pomodoroCounterButtonsContainer.appendChild(pause);
+                        }
+                        renderPomodoroCounter();
 
-                           
+                        function stopTimerWindowInterval(windowIntervalReference) {
+                            clearInterval(windowIntervalReference);
+                        }
+
+                        function startTimerWindowInterval(intervalInMiliseconds) {
+                            WINDOW_INTERVAL = setInterval(function () {
+
+                                if (DOM_MINUTES_ELEMENT.innerText === "00" && DOM_SECONDS_ELEMENT.innerText === "00") {
+                                    stopTimerWindowInterval(WINDOW_INTERVAL);
+                                    return;
+                                }
+                                if (Number(DOM_MINUTES_ELEMENT.innerText) < 10 && DOM_MINUTES_ELEMENT.innerText.charAt(0) !== "0") {
+                                    DOM_MINUTES_ELEMENT.innerText = "0" + (DOM_MINUTES_ELEMENT.innerText);
+                                }
+
+                                if (DOM_MINUTES_ELEMENT.innerText !== "00" && DOM_SECONDS_ELEMENT.innerText === "00") {
+                                    DOM_SECONDS_ELEMENT.innerText = "59";
+                                    DOM_MINUTES_ELEMENT.innerText -= 1;
+                                    if (Number(DOM_MINUTES_ELEMENT.innerText) < 10 && DOM_MINUTES_ELEMENT.innerText.charAt(0) !== "0") {
+                                        DOM_MINUTES_ELEMENT.innerText = "0" + (DOM_MINUTES_ELEMENT.innerText);
+                                    }
+                                } else if (Number(DOM_SECONDS_ELEMENT.innerText) < 10) {
+                                    DOM_SECONDS_ELEMENT.innerText = "0" + (DOM_SECONDS_ELEMENT.innerText - 1)
+                                } else {
+                                    DOM_SECONDS_ELEMENT.innerText -= 1;
+                                    return;
+                                }
+                            }, intervalInMiliseconds);
+                        };
+
+                        function pomodoroStartTimer(event) {
+                            event.preventDefault();
+                            startTimerWindowInterval(1000);
+                        }
+                        function pomodoroPauseTimer(event) {
+                            event.preventDefault();
+                            if (WINDOW_INTERVAL !== null && WINDOW_INTERVAL !== undefined) {
+                                stopTimerWindowInterval(WINDOW_INTERVAL);
+                            }
+                        }
+                        function pomodoroStopAndRestartTimer(e) {
+                            e.preventDefault();
+                            if (WINDOW_INTERVAL !== null && WINDOW_INTERVAL !== undefined) {
+                                pomodoroPauseTimer(e);
+                            }
+                            DOM_MINUTES_ELEMENT.innerText = "25";
+                            DOM_SECONDS_ELEMENT.innerText = "00";
+                        }
+                        function setWindowForShortBreak() {
+                            if (WINDOW_INTERVAL !== null && WINDOW_INTERVAL !== undefined) {
+                                stopTimerWindowInterval(WINDOW_INTERVAL);
+                            }
+                            DOM_MINUTES_ELEMENT.innerText = "05";
+                            DOM_SECONDS_ELEMENT.innerText = "00";
+                        }
+                        function pomodoroShortBreak(e) {
+                            e.preventDefault();
+                            setWindowForShortBreak();
+                            pomodoroStartTimer(e);
 
                         }
-                        setPomodoroAppStyles();
+                        function setWindowForLongBreak() {
+                            if (WINDOW_INTERVAL !== null && WINDOW_INTERVAL !== undefined) {
+                                stopTimerWindowInterval(WINDOW_INTERVAL);
+                            }
+                            DOM_MINUTES_ELEMENT.innerText = "15";
+                            DOM_SECONDS_ELEMENT.innerText = "00";
+
+                        }
+                        function pomodoroLongBreak(e) {
+                            e.preventDefault();
+                            setWindowForLongBreak();
+                            pomodoroStartTimer(e);
+                        }
+
+
+                        //Assign functionality to buttons of pomodoro
+                        document.querySelector(`#${DOM_BUTTON_WORK_ID}`).addEventListener("click", (e) => { pomodoroStartTimer(e) });
+                        document.querySelector(`#${DOM_BUTTON_PAUSE_ID}`).addEventListener("click", (e) => { pomodoroPauseTimer(e) });
+                        document.querySelector(`#${DOM_BUTTON_PAUSE_ID}`).addEventListener("dblclick", (e) => { pomodoroStartTimer(e) });
+                        document.querySelector(`#${DOM_BUTTON_STOPNRESTART_ID}`).addEventListener("click", (e) => { pomodoroStopAndRestartTimer(e) });
+                        document.querySelector(`#${DOM_BUTTON_SHORTBREAK_ID}`).addEventListener("click", (e) => { pomodoroShortBreak(e) });
+                        document.querySelector(`#${DOM_BUTTON_LONGBREAK_ID}`).addEventListener("click", (e) => { pomodoroLongBreak(e) });
+
+
 
                     </script>
                 </section>
@@ -204,12 +297,13 @@
                                     existentToDosArray = getCurrentTodosArrayFromLS();
                                     for (let toDo of existentToDosArray) {
                                         if (toDo === title) {
-                                            console.log(toDo)
+                                            //  console.log(toDo)
                                             var i = existentToDosArray.indexOf(toDo);
                                             removeToDoFromListAndLS(i);
                                         }
                                     }
                                 });
+                                //double click event
                                 toDoElement.addEventListener("dblclick", () => {
                                     toDoElement.style = "text-decoration:none;";
                                     existentToDosArray.push(toDoElement.innerText);
