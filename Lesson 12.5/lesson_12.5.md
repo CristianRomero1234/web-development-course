@@ -260,3 +260,20 @@ Create a file for holding the To Do list code, and export the higher level funct
 ```
 
 ### Step 5 
+
+Last but "note" least, the notepad, export the higher level function and update your html file accordingly.
+
+Please consider the following code:
+
+```html
+<script type="module">
+    import { runNotepad } from "./modules/notepad.js"
+    runNotepad();
+</script>
+```
+
+Now, your html file has fewer lines, and with the modules you can easily add extra functionality. 
+
+I hope this tools helps you in your student path and makes things a little bit easier and organized!
+
+C.R
