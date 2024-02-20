@@ -82,12 +82,9 @@ function createSocialMediaSection(){
 }
 function openNav(mainContentElementId) {
     SIDEBAR_ELEMENT.style = "visibility:visible;"
-    SIDEBAR_ELEMENT.style.width = "250px";
-    document.getElementById(mainContentElementId).style.marginLeft = "250px";
-    if(window.innerWidth < 520){
-        SIDEBAR_ELEMENT.style.width = "100%";
-        document.getElementById(mainContentElementId).style.fontSize = "25%"
-    }
+    SIDEBAR_ELEMENT.style.width = "350px";
+    document.getElementById(mainContentElementId).style.marginLeft = "350px";
+    
     
 }
 function closeNav(mainContentElementId) {
