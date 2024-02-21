@@ -690,12 +690,143 @@ Also update your html file to look like this:
 
 ```
 
-the result in the browser must look similar to:
+Now, the result in the browser must look similar to:
 
 ![image2](https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson%2013/images/Screen%20Shot%202024-02-21%20at%2020.44.32.png)
 
 
 ### Step 4
+
+Now, let's create the login page.
+
+According to your folder organization, create the files or subfolders required for the javascript modules, css styles and html files. 
+
+In the html file, we will part from the basic well-formed html:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog: Le connoisseur, Login</title>
+</head>
+<body>
+    
+</body>
+</html>
+```
+On your own, 
+
+- (In HTML file) Append accordingly the `<link>` and `<script>` tags of Bootstrap CDN, also for your already existent `style.css` file
+
+- (In the Javascript file) add the import for `createHeaderElement`.
+
+In the javascript file for the login view, let's create a function that appends the header to the login page. 
+
+```javascript
+
+import { createHeaderElement } from "./header_element_module.js";
+
+export function renderLogin_view(){
+    let headerOfPage = createHeaderElement("Le connoisseur, login page");
+    document.body.appendChild(headerOfPage);
+}
+
+``` 
+
+and let's now add an `<script>` tag to the html file for calling our login module:
+
+```html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Blog: Le connoisseur, Login</title>
+</head>
+<body>
+    <script type="module">
+        import { renderLogin_view } from "./javascript/login_view_module.js";
+        renderLogin_view();
+    </script>
+</body>
+</html>
+
+```
+
+For this view we won't need the sidebar, but we want to display a form with 2 `<input>` tags and a button to be used to retrieve the credentials from the users.
+
+Yes, you might have noticed there's not an User management System in place for this Blog, We'll focus our efforts on developing the Front end.
+
+On your own, write a function that handles the creation of the HTML elements we require.
+
+Don't write any styles yet, only create and append the elements accordingly.
+
+After, you've completed that, then we will style it using the example from the picture. 
+
+Please consider the following code when updating your `login_view_module.js`:
+
+``` javascript
+
+import { createHeaderElement } from "./header_element_module.js";
+
+
+function createInputSection(inputType){
+    let inputContainer = document.createElement("section");
+    inputContainer.classList.add("mb-3");
+    inputType === "email" ? inputContainer.classList.add("mt-5") :  inputContainer.classList.add("mt-2");    
+    let inputElement = document.createElement("input");
+    [inputElement.type,inputElement.id,inputElement.name] = [inputType,inputType,inputType]; //Destructuring assignment
+    inputElement.placeholder = `Enter ${inputType}`;
+    inputElement.classList.add("form-control");
+
+    inputContainer.appendChild(inputElement);
+    return inputContainer;
+}
+
+function createLoginForm(){
+    let container = document.createElement("main");
+    container.classList.add("container-fluid");
+    container.style = "width: 330px;padding: 45px; border:1px solid black; margin-top: 5%; display:flex; flex-direction: column; justify-content: space-around; overflow:scroll;"
+    let loginForm = document.createElement("form");
+    loginForm.style = "text-align: center;"
+    let callToaction = document.createElement("h2");
+    callToaction.innerText = `Hey Author! Welcome back. \n Please, login`;
+    let emailInput = createInputSection("email" );
+    let pwdInput = createInputSection("password");
+
+    let submitFormButton = document.createElement("button");
+    submitFormButton.classList.add("btn");
+    submitFormButton.classList.add("mt-5");
+    submitFormButton.innerText = "Login";
+    submitFormButton.style = "background: purple; color: lightgray; align-self:center; "
+
+    loginForm.appendChild(callToaction);
+    loginForm.appendChild(emailInput);
+    loginForm.appendChild(pwdInput);
+    container.appendChild(loginForm);
+    loginForm.appendChild(submitFormButton);
+    return container;
+
+}
+
+
+export function renderLogin_view(){
+    let headerOfPage = createHeaderElement("Le connoisseur, login page");
+    let loginFormElement = createLoginForm();
+    document.body.appendChild(headerOfPage);
+    document.body.appendChild(loginFormElement);
+}
+
+```
+
 
 ### Step 5
 
