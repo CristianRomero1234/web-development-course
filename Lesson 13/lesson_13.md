@@ -690,7 +690,9 @@ Also update your html file to look like this:
 
 ```
 
+the result in the browser must look similar to:
 
+![image2](https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson%2013/images/Screen%20Shot%202024-02-21%20at%2020.44.32.png)
 
 
 ### Step 4
