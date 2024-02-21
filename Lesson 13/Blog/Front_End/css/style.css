@@ -54,7 +54,7 @@ ul {
     min-height: 100%;
     border-radius: 5px;
     border: dashed #ea690d 1px;
-    padding: 20px;
+    
 }
 
 .sidebar .author-info {
@@ -65,7 +65,7 @@ ul {
 }
 
 .sidebar .author-info img {
-    flex: 1;
+
     border-radius: 50%;
     /* Make the image circular */
     width: 50px;
@@ -76,7 +76,6 @@ ul {
 }
 
 .sidebar .author-info p {
-    flex: 2;
     font-weight: bold;
     margin: 0;
     /* Remove default margin */
@@ -100,12 +99,7 @@ ul {
     width: 100%;
 }
 
-.sidebar .latest-articles {
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    align-content: center;
-}
+
 
 .sidebar .latest-articles .list-of-latest-articles li a {
     border: none;
@@ -122,7 +116,7 @@ ul {
 }
 
 .sidebar .latest-articles .list-of-latest-articles>li>a:hover {
-    border: 1px solid black;
+    border: 1px dashed  #ea690d ;
     box-shadow: #333 5px;
     border-radius: 10px;
     padding: 2px;
@@ -138,6 +132,9 @@ ul {
     justify-items: center;
     gap: 10px;
     padding: 20px;
+    width: 100%;
+    border: 1px dashed black;
+    border-radius: 20px;
 }
 
 
@@ -150,17 +147,16 @@ ul {
 .blog-article img {
     flex: 2;
     align-self: center;
-    height: 25%;
-    width: 25%;
-
 }
 
 .blog-article figcaption {
     flex: 3;
-    align-self: center;
-    max-width: 25%;
+    align-self: center;    
     overflow: wrap;
     font-size: 10px;
+}
+.blog-article p {
+    align-self: center;
 }
 
 @media (max-width: 768px) {

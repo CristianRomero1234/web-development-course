@@ -14,6 +14,4 @@ export function createHeaderElement(innerTextForH1) {
     HEADER_DOM_ELEMENT.appendChild(HEADER_H1_DOM_ELEMENT);
     return HEADER_DOM_ELEMENT;
 }
-export function renderHeaderElement(parentElementId, textForH1) {    
-    document.getElementById(parentElementId).appendChild(createHeaderElement(textForH1));
-}
+
