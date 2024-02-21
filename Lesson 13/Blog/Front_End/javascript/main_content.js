@@ -75,7 +75,9 @@ export function createButtonToggleSideBar() {
     return button;
 
 }
-
+function toggleOnClick(idOfSidebar){
+    document.getElementsByClassName("sidebar")[0].classList.toggle("active");
+}
 
 
 /**
@@ -168,6 +170,57 @@ function createSearchArea() {
         </ul>
     </aside>
  */
+
+
+function createLatestArticlesSideBarLink(articlesTitlesArray) {
+    let latestArticlesListElement = document.createElement("li");
+    latestArticlesListElement.classList.add("latest-articles");
+
+    let latestArticlesAnchorElement = document.createElement("a");
+    latestArticlesAnchorElement.innerText = "Latest Articles"
+    latestArticlesListElement.appendChild(latestArticlesAnchorElement);
+
+    let latestArticlesLiksList = document.createElement("ul");
+    latestArticlesLiksList.classList.add("list-of-latest-articles");
+    if (articlesTitlesArray === null || articlesTitlesArray === undefined) {
+        articlesTitlesArray = ["The Art of Connoisance I", "The Art of Connoisance II", "The Art of Connoisance III"];
+    }
+    for (let title of articlesTitlesArray) {
+        let linkListElement = document.createElement("li");
+        let linkAnchorElement = document.createElement("a");
+        linkAnchorElement.innerText = title;
+        linkListElement.appendChild(linkAnchorElement);
+        latestArticlesLiksList.appendChild(linkListElement);
+
+    }
+    latestArticlesListElement.appendChild(latestArticlesLiksList);
+
+    return latestArticlesListElement;
+
+}
+
+function createSocialMediaLinksSideBarArea(socialMediaTitlesArray) {
+    let socialMediaLinksListElement = document.createElement("li");
+    let socialMediaLinksAnchorElement = document.createElement("a");
+    socialMediaLinksAnchorElement.innerText = "Social media Links";
+    socialMediaLinksListElement.appendChild(socialMediaLinksAnchorElement);
+
+    let UL_ListOfSocials = document.createElement("ul");
+    if (socialMediaTitlesArray === null || socialMediaTitlesArray === undefined) {
+        socialMediaTitlesArray = ["Social media link I", "Social media link II", "Social media link III"]
+    }
+    for (let title of socialMediaTitlesArray) {
+        var listElement = document.createElement("li");
+        var listElementanchorElement = document.createElement("a");
+        listElementanchorElement.innerText = title;
+        listElement.appendChild(listElementanchorElement);
+        UL_ListOfSocials.appendChild(listElement);
+
+    }
+    socialMediaLinksListElement.appendChild(UL_ListOfSocials);
+    return socialMediaLinksListElement;
+}
+
 export function createSideBarElement(authorsImageURL) {
     let SIDEBAR_DOM_ELEMENT = document.createElement("aside");
     SIDEBAR_DOM_ELEMENT.classList.add("sidebar");
@@ -178,24 +231,79 @@ export function createSideBarElement(authorsImageURL) {
     let subscribeLink = document.createElement("a");
     subscribeLink.innerText = "Subscribe";
     subscribe.appendChild(subscribeLink);
+    let latestArticles = createLatestArticlesSideBarLink(null);
+    let hr = document.createElement("hr");
+    let socialMediaLinks = createSocialMediaLinksSideBarArea();
+
 
 
 
     linksULElement.appendChild(aboutAuthor);
     linksULElement.appendChild(searchInBlog);
     linksULElement.appendChild(subscribe);
+    linksULElement.appendChild(latestArticles);
+    linksULElement.appendChild(hr);
+    linksULElement.appendChild(socialMediaLinks);
 
 
     SIDEBAR_DOM_ELEMENT.appendChild(linksULElement);
 
+    return SIDEBAR_DOM_ELEMENT;
 
+
+}
+/**
+ *  <article class="blog-article">
+        <h2>The Art of Connoisance III</h2>
+        <img id="article-img"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/310px-Placeholder_view_vector.svg.png"
+            alt="This Article's image">
+        <figcaption id="img-caption">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc rhoncus dui vel sem sodales
+            ullamcorper.
+        </figcaption>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc rhoncus dui vel sem sodales ullamcorper.
+            Mauris blandit aliquam elit, eget tincidunt odio velit ullamcorper vitae. Morbi leo risus, porta ac
+            consectetur ac, vestibulum at eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere
+            consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            ultrices ligula in lobortis porttitor.</p>
+        <p>Nulla vitae elit libero, a pharetra augue. Donec sed odio dui. Nullam quis risus eget urna mollis ornare
+            vel quam. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam porta
+            mauris quis diam luctus auctor. Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a
+            ante venenatis dapibus posuere vel neque. Pellentesque habitant morbi tristique senectus et netus et
+            malesuada fames ac turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </article>
+ */
+
+function createPlaceHolderArticle() {
+    let articleElement = document.createElement("article");
+    articleElement.classList.add("blog-article");
+    let articleHeadingTitle = document.createElement("h2");
+    articleHeadingTitle.innerText = "The Art of Connoisance III";
+    articleElement.appendChild(articleHeadingTitle);
+    let placeholderP = document.createElement("p");
+    placeholderP.innerText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc rhoncus dui vel sem sodales ullamcorper.
+    Mauris blandit aliquam elit, eget tincidunt odio velit ullamcorper vitae. Morbi leo risus, porta ac
+    consectetur ac, vestibulum at eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere
+    consectetur est at lobortis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+    ultrices ligula in lobortis porttitor.`;
+    articleElement.appendChild(placeholderP);
+    return articleElement;
 }
 
 export function createPlaceHolderMainContentArea() {
     let mainContentArea = createEmptyMainContentArea();
     let toggleSideBarBtn = createButtonToggleSideBar();
-    let sideBarMenu;
+    toggleSideBarBtn.addEventListener("click",(e)=>{
+        e.preventDefault();
+        toggleOnClick();
+    } )
+    let sideBarMenu = createSideBarElement(null);
+    let articleArea = createPlaceHolderArticle();
 
     mainContentArea.appendChild(toggleSideBarBtn);
+    mainContentArea.appendChild(sideBarMenu);
+    mainContentArea.appendChild(articleArea);
+    return mainContentArea;
 
 }
