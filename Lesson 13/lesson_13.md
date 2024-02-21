@@ -880,6 +880,9 @@ Call your new module from the html file:
 </html>
 ```
 
+Whe you open your html file in the browser should look like this:
+
+![image 4](https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson%2013/images/Screen%20Shot%202024-02-21%20at%2023.26.41.png)
 
 ### Step 6
 
