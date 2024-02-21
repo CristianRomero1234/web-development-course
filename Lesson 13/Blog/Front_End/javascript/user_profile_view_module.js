@@ -4,6 +4,7 @@ import { createMainContentAreaWithSideBarAndButton } from "./main_content_module
 
 function createUserProfileMenu(linkURL, linkText){
     let linkContainer = document.createElement("li");
+    linkContainer.classList.add("mt-4");
     let link = document.createElement("a");
     link.href = linkURL;
     link.innerText = linkText;

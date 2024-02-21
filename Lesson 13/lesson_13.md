@@ -886,6 +886,17 @@ Whe you open your html file in the browser should look like this:
 
 ### Step 6
 
+Now, we will create a view for Creating new Articles. See [Lesson 12.2](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%2012%2E2/lesson_12%2E2.md).
+
+Create the required files or sub-folder according to your project structure.
+
+- Create a new html file.
+- Add Bootstrap CDNs and `style.css`.
+- Create a new javascript file. 
+- Import to your new javascript file, the function for creating the header of the page
+- Write a function that renders the create new article view (initially, only the header). 
+- In your html file, add the `<script>` tag, for calling the javascript that handles the rendering of the create new article view.
+
 ### Step 7
 
 ### Step 8

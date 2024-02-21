@@ -190,6 +190,7 @@ export function createMainContentAreaWithSideBarAndButton() {
         toggleOnClick();
     })
     let sideBarMenu = createSideBarElement(null);
+    
 
     mainContentArea.appendChild(toggleSideBarBtn);
     mainContentArea.appendChild(sideBarMenu);
