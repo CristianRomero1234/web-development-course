@@ -827,6 +827,10 @@ export function renderLogin_view(){
 
 ```
 
+When you open you html file in the Browser, you should see somemthing similar to:
+
+![image 3](https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson%2013/images/Screen%20Shot%202024-02-21%20at%2022.22.59.png)
+
 
 ### Step 5
 
