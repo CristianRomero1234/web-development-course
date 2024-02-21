@@ -13,7 +13,7 @@ export function createButtonToggleSideBar() {
     return button;
 
 }
-function toggleOnClick(idOfSidebar) {
+function toggleOnClick() {
     document.getElementsByClassName("sidebar")[0].classList.toggle("active");
 }
 
@@ -180,4 +180,18 @@ export function createPlaceHolderMainContentArea() {
     mainContentArea.appendChild(articleArea);
     return mainContentArea;
 
+}
+
+export function createMainContentAreaWithSideBarAndButton() {
+    let mainContentArea = createEmptyMainContentArea();
+    let toggleSideBarBtn = createButtonToggleSideBar();
+    toggleSideBarBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        toggleOnClick();
+    })
+    let sideBarMenu = createSideBarElement(null);
+
+    mainContentArea.appendChild(toggleSideBarBtn);
+    mainContentArea.appendChild(sideBarMenu);
+    return mainContentArea;
 }

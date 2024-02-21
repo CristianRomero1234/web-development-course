@@ -834,6 +834,53 @@ When you open you html file in the Browser, you should see somemthing similar to
 
 ### Step 5
 
+Let's create the "User profile" view, as before, create in your project the required files or subfolders according to how you're organizing it. 
+
+Start by creating a well-formed html file:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog: Le connoisseur, User profile</title>
+</head>
+<body>
+    
+</body>
+</html>
+```
+
+- Add the Bootstrap CDNs and the `style.css` file.
+- Create a javascript file for the view and import the header module.
+- Create and export from the user profile view module file a function that renders the placeholder contents.
+
+Call your new module from the html file:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Blog: Le connoisseur, User profile</title>
+</head>
+<body>
+    <script type="module">
+        import { renderUserProfile_view } from "./javascript/user_profile_view_module.js";
+        renderUserProfile_view();
+    </script>
+</body>
+</html>
+```
+
+
 ### Step 6
 
 ### Step 7
