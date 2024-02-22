@@ -20,6 +20,6 @@
   - [Lesson 12.3](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%2012%2E3/lesson_12%2E3.md):*HTML + CSS + JavaScript + Bootstrap*. **Studies Assistant Web App: How to create a To-Do List.**
   -  [Lesson 12.4](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%2012%2E4/lesson_12%2E4.md):*HTML + CSS + JavaScript + Bootstrap*. **Studies Assistant Web App: How to create a Pomodoro timer.**
   -  [Lesson 12.4](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%2012%2E5/lesson_12%2E5.md): **JavaScript Modules: "Organizing our Studies App"**
-- [Lesson 13](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson13/lesson_13.md):*HTML + CSS + JavaScript + React.js CDN*. **How to create a Blog (Front end).**
-- Lesson 14:*HTML + CSS + JavaScript + React.js CDN*. **How to create a Basic Ecommerce "Articles Section".**
+- [Lesson 13](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson13/lesson_13.md):*HTML + CSS + JavaScript Modules + Bootstrap CDN*. **How to create a Blog (Front end).**
+- Lesson 14:*HTML + CSS + JavaScript + React.js CDN*. **How to create a Basic Ecommerce "Products Section".**
 - Lesson 15:*HTML + CSS + JavaScript + Bootstrap + PHP*. **Basic Registration + Login system.**
