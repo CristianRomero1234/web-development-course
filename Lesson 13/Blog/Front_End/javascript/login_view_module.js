@@ -17,7 +17,7 @@ function createInputSection(inputType){
 function createLoginForm(){
     let container = document.createElement("main");
     container.classList.add("container-fluid");
-    container.style = "width: 330px;padding: 45px; border:1px solid black; margin-top: 5%; display:flex; flex-direction: column; justify-content: space-around; overflow:scroll;"
+    container.style = "width: 330px;padding: 45px; border:1px solid black; border-radius:10px; margin-top: 5%; display:flex; flex-direction: column; justify-content: space-around; overflow:scroll;"
     let loginForm = document.createElement("form");
     loginForm.style = "text-align: center;"
     let callToaction = document.createElement("h2");

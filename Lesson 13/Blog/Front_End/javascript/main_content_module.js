@@ -71,6 +71,9 @@ function createLatestArticlesSideBarLink(articlesTitlesArray) {
         let linkListElement = document.createElement("li");
         let linkAnchorElement = document.createElement("a");
         linkAnchorElement.innerText = title;
+        if(title === "The Art of Connoisance III"){
+            linkAnchorElement.href = "./user_view.html";
+        }
         linkListElement.appendChild(linkAnchorElement);
         latestArticlesLiksList.appendChild(linkListElement);
 

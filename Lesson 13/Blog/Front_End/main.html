@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Mock-up</title>
+</head>
+
+<body>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .centered-list {
+            list-style-type: none;
+            /* Remove default bullet points */
+            padding: 5%;
+            /* Remove default padding */
+            margin: auto;
+
+            /* Center horizontally */
+            text-align: center;
+            /* Center list items horizontally */
+        }
+
+        @media (max-width: 768px) {
+            .centered-list {
+                font-size: 1.2rem;
+                /* Adjust font size for smaller screens */
+            }
+        }
+
+        .image-carousel {
+            width: 800px;
+            /* Adjust width as needed */
+            margin: 0 auto;
+            /* Center horizontally */
+            overflow: hidden;
+            /* Hide overflowing content */
+            list-style: none;
+        }
+
+        .carousel-slides {
+            display: flex;
+            width: 300%;
+            /* 3 times the container width to show 3 images */
+            animation: slide 300s infinite linear;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+
+            33% {
+                transform: translateX(-100%);
+            }
+
+            66% {
+                transform: translateX(-200%);
+            }
+
+            100% {
+                transform: translateX(-300%);
+            }
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .carousel-nav button {
+            padding: 5px 10px;
+            border: none;
+            background-color: #ccc;
+            cursor: pointer;
+        }
+    </style>
+    <h1>Blog Parts, by Cristian Romero</h1>
+    <ul class="centered-list">
+        <li><a href="./user_view.html" target="_blank" rel="noopener noreferrer">Blog display Articles</a></li>
+        <li><a href="./login_view.html" target="_blank" rel="noopener noreferrer">Blog Login (Author's view)</a></li>
+        <li><a href="./user_profile_view.html" target="_blank" rel="noopener noreferrer">Blog User Profile (Author's
+                view)</a></li>
+        <li><a href="./content_creation_view.html" target="_blank" rel="noopener noreferrer">Blog Content Creation Area
+                (Author's view)</a></li>
+
+        <li><a href="https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson%2013/lesson_13.md" target="_blank" rel="noopener noreferrer">Tutorial</a></li>
+    </ul>
+    <div class="image-carousel">
+        <ul class="carousel-slides">
+            <li><img src="https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson%2013/images/Screen%20Shot%202024-02-21%20at%2020.44.32.png?raw=true"
+                    alt="Image 1"></li>
+            <li><img src="https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson%2013/images/Screen%20Shot%202024-02-21%20at%2022.22.59.png?raw=true"
+                    alt="Image 2"></li>
+            <li><img src="https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson%2013/images/Screen%20Shot%202024-02-21%20at%2023.26.41.png?raw=true"
+                    alt="Image 3"></li>
+            <li><img src="https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson%2013/images/Screen%20Shot%202024-02-22%20at%2000.36.55.png?raw=true"
+                    alt="Image 3"></li>
+        </ul>
+
+    </div>
+
+
+</body>
+
+</html>
