@@ -692,7 +692,7 @@ Also update your html file to look like this:
 
 Now, the result in the browser must look similar to:
 
-![image2](https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson%2013/images/Screen%20Shot%202024-02-21%20at%2020.44.32.png)
+![image2](https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson%2013/images/article_view.png)
 
 
 ### Step 4
@@ -829,7 +829,7 @@ export function renderLogin_view(){
 
 When you open you html file in the Browser, you should see somemthing similar to:
 
-![image 3](https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson%2013/images/Screen%20Shot%202024-02-21%20at%2022.22.59.png)
+![image 3](https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson%2013/images/login_page.png)
 
 
 ### Step 5
@@ -882,7 +882,7 @@ Call your new module from the html file:
 
 Whe you open your html file in the browser should look like this:
 
-![image 4](https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson%2013/images/Screen%20Shot%202024-02-21%20at%2023.26.41.png)
+![image 4](https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson%2013/images/user_profile.png)
 
 ### Step 6
 
@@ -903,7 +903,7 @@ For this step we will reuse the example code provided at the end of lesson [Less
 - Add to the DOM a `<section>` tag where you can display the look of the Article.
 
 At the end you content creation area in the Web Browser, should like similar to:
-![image 5](https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson%2013/images/Screen%20Shot%202024-02-22%20at%2000.36.55.png)
+![image 5](https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson%2013/images/content_creationpng)
 
 
 - Update the user profile view javascript file to Link the create new article view from the menu .
