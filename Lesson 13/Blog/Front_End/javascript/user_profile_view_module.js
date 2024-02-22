@@ -28,7 +28,7 @@ function createPlaceholderUserProfile(){
 
     let userMenuULElement = document.createElement("ul");
     userMenuULElement.style = "margin:auto;display:flex; flex-direction:column; padding: 15px; width: fit-content; "
-    let placeholderMenuLink_0 = createUserProfileMenu("#", "Create New Article");
+    let placeholderMenuLink_0 = createUserProfileMenu("./content_creation_view.html", "Create New Article");
     let placeholderMenuLink_1 = createUserProfileMenu("#", "Change Profile picture");
     let placeholderMenuLink_2 = createUserProfileMenu("#", "Other settings");
 

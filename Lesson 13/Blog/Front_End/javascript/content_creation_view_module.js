@@ -17,15 +17,27 @@ function createContentCreationArea(){
     container.classList.add("container-fluid");
     container.style = "width: 50%; margin-top:5%;";
 
+    let textEditorCTA = document.createElement("h3");
+    textEditorCTA.innerText = "Create Your new Article below";
+    textEditorCTA.classList.add("text-center");
+    textEditorCTA.classList.add("mb-3");
+
     let textEditor = createNotepadApp();
     
+    let textPreviewCTA = document.createElement("h3");
+    textPreviewCTA.innerText = "Preview";
+    textPreviewCTA.classList.add("text-center");
+    textPreviewCTA.classList.add("mt-5");
+
     let textPreview = createTextPreviewElement();
     document.addEventListener("keyup", (e)=>{
         if(e.key === "Enter" ||e.key == " " || e.code == "Space"){
             textPreview.innerHTML = localStorage.getItem("savedInnerHTML");
         }
     })
+    container.appendChild(textEditorCTA);
     container.appendChild(textEditor);
+    container.appendChild(textPreviewCTA);
     container.appendChild(textPreview);
     return container;
 }

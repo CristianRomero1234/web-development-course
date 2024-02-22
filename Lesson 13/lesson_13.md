@@ -897,10 +897,16 @@ Create the required files or sub-folder according to your project structure.
 - Write a function that renders the create new article view (initially, only the header). 
 - In your html file, add the `<script>` tag, for calling the javascript that handles the rendering of the create new article view.
 
-### Step 7
+For this step we will reuse the example code provided at the end of lesson [Lesson 12.2](https://github.com/CristianRomero1234/web-development-course/tree/main/Lesson%2012%2E2/lesson_12%2E2.md) as a JavaScript module.
 
-### Step 8
+- Import the required code for the text editor, in the javascript file that handles the create new article view.
+- Add to the DOM a `<section>` tag where you can display the look of the Article.
 
-### Step 9
+At the end you content creation area in the Web Browser, should like similar to:
+![image 5](https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson%2013/images/Screen%20Shot%202024-02-22%20at%2000.36.55.png)
 
-### Step 10
+
+- Update the user profile view javascript file to Link the create new article view from the menu .
+
+After you've completed the previous steps, the Blog's front end foundation is layed and you can improve it to connect to a backend system for data persistence and user management. 
+
