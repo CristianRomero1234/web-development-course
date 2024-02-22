@@ -910,5 +910,5 @@ At the end you content creation area in the Web Browser, should like similar to:
 
 After you've completed the previous steps, the Blog's front end foundation is layed and you can improve it to connect to a backend system for data persistence and user management. 
 
-Please, make sure to visit the presentation for this project: [Presentation Link](https://cristianromero1234.github.io/web-development-course/Lesson 13/Blog/Front_End/main.html)
+Please, make sure to visit the presentation for this project: [Presentation Link](https://cristianromero1234.github.io/web-development-course/Lesson13/Blog/Front_End/main.html)
 
