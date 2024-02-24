@@ -13,13 +13,19 @@
         body {
             text-align: center;
             font-family: Arial, Helvetica, sans-serif;
+            max-height: fit-content;
+            border: 3px dashed black;
+            border-radius: 15px;
         }
         ul{
             list-style-type: none;
         }
+        hr{
+            width: 70%;
+            margin:auto;
+        }
 
         .centered-list {
-            
             /* Remove default bullet points */
             padding: 5%;
             /* Remove default padding */
@@ -45,13 +51,14 @@
             overflow: hidden;
             /* Hide overflowing content */
             list-style: none;
+            max-height: 500px;
         }
 
         .carousel-slides {
             display: flex;
             width: 300%;
             /* 3 times the container width to show 3 images */
-            animation: slide 300s infinite linear;
+            animation: slide 200s infinite linear;
         }
 
         @keyframes slide {
@@ -87,12 +94,15 @@
 
         img { 
             border: 2px dotted orange;
+            border-bottom: none;
+            max-width: 500px;
+            max-height: 500px;
         }
     </style>
     <h1>Blog Parts, by Cristian Romero</h1>
-
+    <hr>
     <iframe style="border:none" width="800" height="450" src="https://whimsical.com/embed/LuMnpJzgwhCeNBWEW2GuCX"></iframe>
-
+    <hr>
     <ul class="centered-list">
         <li><a href="./user_view.html" target="_blank" rel="noopener noreferrer">Blog display Articles</a></li>
         <li><a href="./login_view.html" target="_blank" rel="noopener noreferrer">Blog Login (Author's view)</a></li>
@@ -104,6 +114,7 @@
         <li><a href="https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson13/lesson_13.md"
                 target="_blank" rel="noopener noreferrer">Tutorial</a></li>
     </ul>
+    <hr>
     <div class="image-carousel">
         <ul class="carousel-slides">
             <li><img src="https://github.com/CristianRomero1234/web-development-course/blob/main/Lesson13/images/article_view.png?raw=true"
