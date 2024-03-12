@@ -1,0 +1,47 @@
+.image-carousel {
+    max-width: 800px;
+    /* Adjust width as needed */
+    margin: 0 auto;
+    /* Center horizontally */
+    overflow: hidden;
+    /* Hide overflowing content */
+    list-style: none;
+    max-height: 500px;
+}
+
+.carousel-slides {
+    display: flex;
+    width: 300%;
+    /* 3 times the container width to show 3 images */
+    animation-play-state: running;
+    animation: slide 20s linear;
+    animation-iteration-count:4;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% { /* Adjust from 33% */
+        transform: translateX(-100%);
+    }
+
+    50% { /* Adjust from 66% */
+        transform: translateX(-200%);
+    }
+
+    75% { /* Add new keyframe */
+        transform: translateX(-300%);
+    }
+
+    100% {
+        transform: translateX(-400%); /* Adjust from -300% */
+    }
+}
+img {
+    border: 2px dotted orange;
+    border-bottom: none;
+    max-width: 500px;
+    max-height: 500px;
+}

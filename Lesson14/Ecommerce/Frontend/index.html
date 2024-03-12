@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce: products section</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/carousel.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <script type="module">
+        import { createHeaderElement } from "./js/header_element_module.js";
+        import { createEmptyMainContentArea } from "./js/main_content_module.js";
+        import { getAllProducts, getAllProductsLimitResults, getSingleProduct, getAllProductsInCategory, getAllCategories } from './js/data-provider.js'
+        import { createImageCarouselSection, createCarouselSlidesSection, createImgElementForCarousel } from './js/carousel_module.js';
+
+        // console.log(await getAllProducts());
+        // console.log(await getAllProductsLimitResults(9), "limit Results call");
+        // console.log(await getAllProductsInCategory("electronics"));
+        // console.log(await getAllCategories());
+
+        async function createfirstCarousel() {
+            let fiveProductCarouselData = await getAllProductsLimitResults(5);
+            let imgElementsArray = [];
+            for (const iterator of fiveProductCarouselData) {
+                // console.log(iterator);
+                let newImg = createImgElementForCarousel(iterator.id, "imgTitle...", iterator.image);
+                imgElementsArray.push(newImg);
+            }
+            // console.log(imgElementsArray);
+            let slidesCarousel = createCarouselSlidesSection(...imgElementsArray);
+            let carouselContainer = createImageCarouselSection();
+            carouselContainer.appendChild(slidesCarousel);
+            return carouselContainer;
+        }
+        let firstCarouselContainer = await createfirstCarousel();
+        let mainArea = createEmptyMainContentArea();
+        mainArea.appendChild(firstCarouselContainer);
+        document.body.appendChild(createHeaderElement("Ecommerce shop"));
+        document.body.appendChild(mainArea);
+
+       
+
+    </script>
+</body>
+
+</html>

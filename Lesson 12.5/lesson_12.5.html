@@ -61,7 +61,7 @@
                     Pomodoro
                 </button>
             </h2>
-            <section id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingAccItemOne"
+            <section id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingAccItemOne"
                 data-bs-parent="#accordion-parent-container">
                 <section class="accordion-body" id="pomodoroFeatureContainer">
                     <section id="pomodoro-app">
@@ -118,7 +118,7 @@
                     Notepad
                 </button>
             </h2>
-            <section id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingAccItemThree"
+            <section id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingAccItemThree"
                 data-bs-parent="#accordion-parent-container">
                 <section class="accordion-body">
                     <form style="padding: 5px;">
@@ -149,7 +149,7 @@
                             </section>
                         </fieldset>
                         <fieldset id="notepad-text-area" contenteditable="true"
-                            style="border: 2px solid black; border-radius:15px; min-height: 200px; padding:10px; margin-top:5px;">
+                            style="border: 2px solid black; border-radius:15px; height: 400px; padding:10px; margin-top:5px; overflow: scroll; resize: both; ">
                             Some Text
                         </fieldset>
                         <script type="module">
