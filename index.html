@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Web Development course by C.R</title>
+    <!-- Lightweight client-side loader that feature-detects and load polyfills only when necessary -->
+    <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2/webcomponents-loader.min.js"></script>
+
+    <!-- Load the element definition -->
+    <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@1/src/zero-md.min.js"></script>
+
+
+
+</head>
+
+<body>
+    <!-- A grey horizontal navbar that becomes vertical on small screens -->
+    <nav class="navbar navbar-expand-sm bg-light">
+        <section class="container-fluid" style="text-align:center;display: flex;justify-content: space-around;">
+            <h2>Web Development course by C.R</h2>
+        </section>
+    </nav>
+    <section class="container-sm">
+
+
+        <section class="accordion" id="accordion-parent-container">
+            <section class="accordion-item" id="AccItemOne">
+                <h2 class="accordion-header" id="headingAccItemOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        To-Do List 
+                    </button>
+                </h2>
+                <section id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingAccItemOne" data-bs-parent="#accordion-parent-container">
+                    <style>
+                        .couponcode:hover .coupontooltip {
+                            /* NEW */
+                            display: block;
+                        }
+
+                        .coupontooltip {
+                            display: none;
+                            /* NEW */
+                            background: #C8C8C8;
+                            margin-left: 28px;
+                            padding: 10px;
+                            position: absolute;
+                            z-index: 1000;
+                            width: fit-content;
+                            height: fit-content;
+                            border-radius: 10px;
+                        }
+
+                        .couponcode {
+                            width: fit-content;
+                            height: fit-content;
+                        }
+                    </style>
+
+
+                    <section class="accordion-body" id="toDoListContainer">
+                       
+                        <script>
+                            const TODO_LIST_PARENT_ELEMENT_ID = "toDoListContainer";
+                            const TODO_LIST_PARENT_ELEMENT = document.querySelector(`#${TODO_LIST_PARENT_ELEMENT_ID}`);
+                            const TODOS_LOCALSTORAGE_KEY = "toDos";
+                            let existentToDosArray = getCurrentTodosArrayFromLS();
+                            let totalCreatedToDos = existentToDosArray.length;
+
+                            function getCurrentTodosArrayFromLS() {
+                                let arr;//array
+                                let existentSavedToDosFromLS = localStorage.getItem(TODOS_LOCALSTORAGE_KEY);//string 
+                                if (existentSavedToDosFromLS !== null && existentSavedToDosFromLS !== undefined) {
+                                    arr = JSON.parse(existentSavedToDosFromLS);
+                                } else {
+                                    arr = [];
+                                }
+
+                                return arr;
+                            }
+                            function removeToDoFromListAndLS(indexInExistentToDosArray) {
+                                let existentToDosArray = getCurrentTodosArrayFromLS();
+                                existentToDosArray.splice(indexInExistentToDosArray, 1);
+                                localStorage.removeItem(TODOS_LOCALSTORAGE_KEY);
+                                localStorage.setItem(TODOS_LOCALSTORAGE_KEY, JSON.stringify(existentToDosArray));
+                            }
+
+                            function createNewToDoElement(e,title, containerId, createNewToDoInputId, isFromLocalStorage) {
+                                e.preventDefault();
+                                if (title !== "") {
+                                    totalCreatedToDos = existentToDosArray.length;
+                                    const toDoElementContainer = document.createElement("section");
+                                    toDoElementContainer.id = `container-to-do-element-${totalCreatedToDos}`;
+                                    toDoElementContainer.classList.add("couponcode");
+
+                                    let tooltip =  document.createElement("span");
+                                    tooltip.classList.add("coupontooltip");
+                                    tooltip.innerText = "Single click for marking as done/for deletion*. \nDouble click to make item 'Active' again. \n*=Will dissapear after you refresh the page.";
+
+
+                                    let toDoElement = document.createElement("p");
+                                    toDoElement.id = `to-do-element-${totalCreatedToDos}`;
+                                   
+                                    toDoElement.innerText =title;
+
+                                    if (!isFromLocalStorage) {
+                                        existentToDosArray.push(toDoElement.innerText);
+                                    }
+                                    let clicked = false;
+                                    toDoElement.addEventListener("click", () => {
+                                        toDoElement.style = "text-decoration:line-through;";
+                                        existentToDosArray = getCurrentTodosArrayFromLS();
+                                        for (let toDo of existentToDosArray) {
+                                            if (toDo === title) {
+                                                console.log(toDo)
+                                                var i = existentToDosArray.indexOf(toDo);
+                                                removeToDoFromListAndLS(i);
+                                            }
+                                        }
+                                    });
+                                    toDoElement.addEventListener("dblclick", () => {
+                                        toDoElement.style = "text-decoration:none;";
+                                        existentToDosArray.push(toDoElement.innerText);
+                                        localStorage.removeItem(TODOS_LOCALSTORAGE_KEY);
+                                        localStorage.setItem(TODOS_LOCALSTORAGE_KEY, JSON.stringify(existentToDosArray));
+                                    })
+
+
+                                    let theCreateNewToDoInput = document.querySelector(`#${createNewToDoInputId}`);
+                                    theCreateNewToDoInput.value = '';
+
+                                    toDoElementContainer.appendChild(toDoElement);
+                                    toDoElementContainer.appendChild(tooltip);
+                                    localStorage.removeItem(TODOS_LOCALSTORAGE_KEY);
+                                    localStorage.setItem(TODOS_LOCALSTORAGE_KEY, JSON.stringify(existentToDosArray));
+                                    let toDosArea = document.querySelector(`#${containerId}`);
+                                    toDosArea.appendChild(toDoElementContainer);
+                                }
+                            }
+
+                            const createToDoList = () => {
+                                const toDoListElement = document.createElement("form");
+                                toDoListElement.id = "toDoList";
+
+                                let toDoListCreateNewToDoContainer = document.createElement("section");
+                                toDoListCreateNewToDoContainer.id = "createNewToDoContainer"
+                                toDoListCreateNewToDoContainer.classList.add("input-group");
+                                toDoListCreateNewToDoContainer.classList.add("mb-3");
+
+                                let toDoListCreateNewToDoInput = document.createElement("input");
+                                toDoListCreateNewToDoInput.id = "createNewTodoInput";
+                                toDoListCreateNewToDoInput.type = "text";
+                                toDoListCreateNewToDoInput.placeholder = "What needs to be done?"
+                                toDoListCreateNewToDoInput.classList.add("form-control");
+
+                                const toDoElementsContainerId = "toDoElementsContainer"
+                                let toDoListCreateNewToDoButton = document.createElement("button");
+                                toDoListCreateNewToDoButton.id = "submitNewToDo";
+                                toDoListCreateNewToDoButton.innerText = "Create New To Do"
+                                toDoListCreateNewToDoButton.classList.add("btn");
+                                toDoListCreateNewToDoButton.classList.add("btn-secondary");
+                                toDoListCreateNewToDoButton.onclick = (event) => {event, createNewToDoElement(toDoListCreateNewToDoInput.value, toDoElementsContainerId, toDoListCreateNewToDoInput.id, false) }
+                                toDoListCreateNewToDoInput.addEventListener("keyup", (event) => {
+                                    if (event.key === "Enter") {
+                                        createNewToDoElement(event,toDoListCreateNewToDoInput.value, toDoElementsContainerId, toDoListCreateNewToDoInput.id, false);
+                                    }
+                                })
+
+                                toDoListCreateNewToDoContainer.appendChild(toDoListCreateNewToDoInput);
+                                toDoListCreateNewToDoContainer.appendChild(toDoListCreateNewToDoButton);
+                                TODO_LIST_PARENT_ELEMENT.appendChild(toDoListCreateNewToDoContainer);
+
+                                let toDoElementsContainer = document.createElement("section");
+                                toDoElementsContainer.id = toDoElementsContainerId;
+
+                                TODO_LIST_PARENT_ELEMENT.appendChild(toDoElementsContainer);
+                                let todosInLS = getCurrentTodosArrayFromLS();
+                                if (todosInLS !== null && todosInLS !== []) {
+                                    for (let i = 0; i < todosInLS.length; i++) {
+                                        createNewToDoElement(new Event("keyup"),todosInLS[i], toDoElementsContainerId, toDoListCreateNewToDoInput.id, true);
+                                    }
+                                }
+                            }
+                            createToDoList();
+                        </script>
+                    </section>
+                </section>
+            </section>
+            <section class="accordion-item" id="AccItemTwo">
+                <h2 class="accordion-header" id="headingAccItemTwo">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        Notepad
+                    </button>
+
+
+                </h2>
+                <section id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingAccItemTwo" data-bs-parent="#accordion-parent-container">
+                    
+                    <section class="accordion-body">
+                        <form style="padding: 5px;">
+                            <fieldset id="notepad-toolbar">
+                                <button type="button" class="btn btn-light"
+                                    onclick="document.execCommand('italic',false,null);"
+                                    title="Italicize Highlighted Text">
+                                    <i>I</i>
+                                </button>
+                                <button type="button" class="btn btn-light"
+                                    onclick="document.execCommand( 'bold',false,null);" title="Bold Highlighted Text">
+                                    <b>B</b>
+                                </button>
+                                <button type="button" class="btn btn-light"
+                                    onclick="document.execCommand( 'underline',false,null);"
+                                    title='Underline Highlighted Text'>
+                                    <u>U</u>
+                                </button>
+                                <section class="btn-group" role="group">
+                                    <button id="btnGroupDrop1" type="button" class="btn btn-light dropdown-toggle"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Other options
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                        <li><a onclick="startDownloadAsHTMLFile('notes')" class="dropdown-item"
+                                                href="#">Download file</a></li>
+                                        <li><a onclick="handleClickSaveTolocalStorageButton()" class="dropdown-item"
+                                                href="#">Save to LocalStorage</a></li>
+                                    </ul>
+                                </section>
+                            </fieldset>
+                            <fieldset id="notepad-text-area" contenteditable="true"
+                                style="border: 2px solid black; border-radius:15px; min-height: 200px; padding:10px; margin-top:5px;">
+                                Some Text
+                            </fieldset>
+                            <script>
+                                const NOTEPAD_INNERHTML_LOCALSTORAGE_KEY = 'savedInnerHTML';
+                                const NOTEPAD_INNERTEXT_LOCALSTORAGE_KEY = 'savedInnerTEXT';
+                                const ID_OF_NOTEPAD_TEXT_AREA = "notepad-text-area";
+                                const NOTEPAD_TEXT_AREA_ELEMENT = document.querySelector("#" + ID_OF_NOTEPAD_TEXT_AREA);
+                                const isUndefinedOrNull = (objectToCheck) => {
+                                    if (objectToCheck === undefined || objectToCheck === null) {
+                                        return true;
+                                    }
+                                    return false;
+                                    //returns boolean
+                                };
+                                const isEmptyString = (stringToCheck) => {
+                                    if (typeof stringToCheck === 'string' || stringToCheck instanceof String) {
+                                        return isUndefinedOrNull(stringToCheck) ? true : (stringToCheck.trim() === "");
+                                    }
+                                    return true;
+                                    //returns boolean
+                                };
+                                let retrieveFromLocalStorage = (key) => {
+                                    let valueFromLocalStorage = localStorage.getItem(key);
+                                    return valueFromLocalStorage;
+                                }
+                                let saveToLocalStorage = (key, value) => {
+                                    if (!isEmptyString(key) && !isEmptyString(value)) {
+                                        localStorage.setItem(key, value);
+                                    }
+                                };
+                                let saveToLocalStorageOnlyText = (value) => {
+                                    if (value.trim() !== '') {
+                                        saveToLocalStorage('savedInnerText', value);
+                                    }
+                                };
+                                const listenForEnterOrSpace = () => {
+                                    document.addEventListener("keydown", function (event) {
+                                        if (event.key === "Enter") {
+                                            saveToLocalStorageOnlyText(NOTEPAD_TEXT_AREA_ELEMENT.innerText)
+                                            saveToLocalStorage(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY, NOTEPAD_TEXT_AREA_ELEMENT.innerHTML);
+                                        }
+                                    })
+                                };
+                                const handleClickSaveTolocalStorageButton = () => {
+                                    saveToLocalStorageOnlyText(NOTEPAD_TEXT_AREA_ELEMENT.innerText)
+                                    saveToLocalStorage(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY, NOTEPAD_TEXT_AREA_ELEMENT.innerHTML);
+                                };
+                                let cleanLocalStorage = (key) => {
+                                    if (key === null || key === undefined) {
+                                        localStorage.setItem(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY, '');
+                                    } else {
+                                        localStorage.setItem(key, '');
+                                    }
+                                };
+
+                                /*Download as File related*/
+                                const triggerDownload = (fileName, fileExtension, fileContent) => {
+                                    fileName = isEmptyString(fileName) ? DEFAULT_FILENAME : fileName.trim();
+                                    fileExtension = isEmptyString(fileExtension) ? 'html' : fileExtension.trim();
+                                    // Define MIME type for blob
+                                    const MIME_Type = fileExtension === "txt" ? "text/plain" : "text/html";
+                                    // Create a Blob containing the text data
+                                    const blob = new Blob([fileContent], { type: MIME_Type });
+                                    // Create a link element
+                                    const downloadLink = document.createElement('a');
+                                    // Set the link's href attribute to a URL representing the Blob
+                                    downloadLink.href = URL.createObjectURL(blob);
+                                    // Set the download attribute with the desired file name
+                                    downloadLink.download = `${fileName}.${fileExtension}`;
+                                    // Append the link to the document
+                                    document.body.appendChild(downloadLink);
+                                    // Trigger a click on the link to initiate the download
+                                    downloadLink.click();
+                                };
+                                const startDownloadAsHTMLFile = (filename) => {
+                                    isEmptyString(localStorage.getItem(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY)) ? alert("No contents to download")
+                                        : triggerDownload(filename, "html", localStorage.getItem(NOTEPAD_INNERHTML_LOCALSTORAGE_KEY));
+                                };
+
+                                function runNotepad() {
+                                    NOTEPAD_TEXT_AREA_ELEMENT.innerHTML = isEmptyString(retrieveFromLocalStorage('savedInnerHTML')) === true ? "Press enter to save to Browser's local storage" : localStorage.getItem('savedInnerHTML');
+                                    listenForEnterOrSpace();
+                                }
+
+                                runNotepad();
+
+                            </script>
+                        </form>
+                    </section>
+                </section>
+            </section>
+            <section class="accordion-item" id="AccItemThree">
+                <h2 class="accordion-header" id="headingAccItemThree">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                        Index
+                    </button>
+                </h2>
+                <section id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingAccItemThree" data-bs-parent="#accordion-parent-container">
+                    <section class="accordion-body"> <zero-md src="NOTREADME.md"></zero-md></section>
+                </section>
+            </section>
+        </section>
+    </section>
+
+</body>
+
+</html>
