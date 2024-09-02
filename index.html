@@ -33,10 +33,11 @@
                 <h2 class="accordion-header" id="headingAccItemOne">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        To-Do List 
+                        To-Do List
                     </button>
                 </h2>
-                <section id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingAccItemOne" data-bs-parent="#accordion-parent-container">
+                <section id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingAccItemOne"
+                    data-bs-parent="#accordion-parent-container">
                     <style>
                         .couponcode:hover .coupontooltip {
                             /* NEW */
@@ -64,7 +65,7 @@
 
 
                     <section class="accordion-body" id="toDoListContainer">
-                       
+
                         <script>
                             const TODO_LIST_PARENT_ELEMENT_ID = "toDoListContainer";
                             const TODO_LIST_PARENT_ELEMENT = document.querySelector(`#${TODO_LIST_PARENT_ELEMENT_ID}`);
@@ -90,7 +91,7 @@
                                 localStorage.setItem(TODOS_LOCALSTORAGE_KEY, JSON.stringify(existentToDosArray));
                             }
 
-                            function createNewToDoElement(e,title, containerId, createNewToDoInputId, isFromLocalStorage) {
+                            function createNewToDoElement(e, title, containerId, createNewToDoInputId, isFromLocalStorage) {
                                 e.preventDefault();
                                 if (title !== "") {
                                     totalCreatedToDos = existentToDosArray.length;
@@ -98,15 +99,15 @@
                                     toDoElementContainer.id = `container-to-do-element-${totalCreatedToDos}`;
                                     toDoElementContainer.classList.add("couponcode");
 
-                                    let tooltip =  document.createElement("span");
+                                    let tooltip = document.createElement("span");
                                     tooltip.classList.add("coupontooltip");
                                     tooltip.innerText = "Single click for marking as done/for deletion*. \nDouble click to make item 'Active' again. \n*=Will dissapear after you refresh the page.";
 
 
                                     let toDoElement = document.createElement("p");
                                     toDoElement.id = `to-do-element-${totalCreatedToDos}`;
-                                   
-                                    toDoElement.innerText =title;
+
+                                    toDoElement.innerText = title;
 
                                     if (!isFromLocalStorage) {
                                         existentToDosArray.push(toDoElement.innerText);
@@ -164,10 +165,10 @@
                                 toDoListCreateNewToDoButton.innerText = "Create New To Do"
                                 toDoListCreateNewToDoButton.classList.add("btn");
                                 toDoListCreateNewToDoButton.classList.add("btn-secondary");
-                                toDoListCreateNewToDoButton.onclick = (event) => {event, createNewToDoElement(toDoListCreateNewToDoInput.value, toDoElementsContainerId, toDoListCreateNewToDoInput.id, false) }
+                                toDoListCreateNewToDoButton.onclick = (event) => { event, createNewToDoElement(toDoListCreateNewToDoInput.value, toDoElementsContainerId, toDoListCreateNewToDoInput.id, false) }
                                 toDoListCreateNewToDoInput.addEventListener("keyup", (event) => {
                                     if (event.key === "Enter") {
-                                        createNewToDoElement(event,toDoListCreateNewToDoInput.value, toDoElementsContainerId, toDoListCreateNewToDoInput.id, false);
+                                        createNewToDoElement(event, toDoListCreateNewToDoInput.value, toDoElementsContainerId, toDoListCreateNewToDoInput.id, false);
                                     }
                                 })
 
@@ -182,7 +183,7 @@
                                 let todosInLS = getCurrentTodosArrayFromLS();
                                 if (todosInLS !== null && todosInLS !== []) {
                                     for (let i = 0; i < todosInLS.length; i++) {
-                                        createNewToDoElement(new Event("keyup"),todosInLS[i], toDoElementsContainerId, toDoListCreateNewToDoInput.id, true);
+                                        createNewToDoElement(new Event("keyup"), todosInLS[i], toDoElementsContainerId, toDoListCreateNewToDoInput.id, true);
                                     }
                                 }
                             }
@@ -200,8 +201,9 @@
 
 
                 </h2>
-                <section id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingAccItemTwo" data-bs-parent="#accordion-parent-container">
-                    
+                <section id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingAccItemTwo"
+                    data-bs-parent="#accordion-parent-container">
+
                     <section class="accordion-body">
                         <form style="padding: 5px;">
                             <fieldset id="notepad-toolbar">
@@ -332,12 +334,180 @@
                         Index
                     </button>
                 </h2>
-                <section id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingAccItemThree" data-bs-parent="#accordion-parent-container">
+                <section id="collapseThree" class="accordion-collapse collapse"
+                    aria-labelledby="headingAccItemThree" data-bs-parent="#accordion-parent-container">
                     <section class="accordion-body"> <zero-md src="NOTREADME.md"></zero-md></section>
                 </section>
             </section>
+            <section class="accordion-item" id="AccItemFour">
+                <h2 class="accordion-header" id="headingAccItemFour">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                        What do I need to know beforehand?
+                    </button>
+                </h2>
+                <section id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingAccItemFour"
+                    data-bs-parent="#accordion-parent-container">
+                    <section class="accordion-body">
+                        <zero-md src="Lesson 0/lesson_0.md"></zero-md>
+                    </section>
+                </section>
+            </section>
+            <section class="accordion-item" id="AccItemFive">
+                <h2 class="accordion-header" id="headingAccItemFive">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                        How to create basic shapes.
+                    </button>
+                </h2>
+                <section id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingAccItemFive"
+                    data-bs-parent="#accordion-parent-container">
+                    <section class="accordion-body">
+                        <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="bGKVNpb"
+                            data-pen-title="Ejercicio formas geometricas" data-editable="true"  data-user="cromerolo2" 
+                            style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+                            <span>See the Pen <a href="https://codepen.io/cromerolo2/pen/bGKVNpb">
+                                    Ejercicio formas geometricas</a> by Cristian (<a
+                                    href="https://codepen.io/cromerolo2">@cromerolo2</a>)
+                                on <a href="https://codepen.io">CodePen</a>.</span>
+                        </p>
+                        <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+                        <br>
+                        <br>
+                        <zero-md src="Lesson 1/lesson_1.md"></zero-md>
+                    </section>
+                </section>
+            </section>
+            <section class="accordion-item" id="AccItemSix">
+                <h2 class="accordion-header" id="headingAccItemSix">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix"
+                        aria-expanded="true" aria-controls="collapseSix">
+                        Changing a HTML tag using JavaScript.
+                    </button>
+                </h2>
+                <section id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingAccItemSix"
+                    data-bs-parent="#accordion-parent-container">
+                    <section class="accordion-body">
+                        <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="XWYmbjx" data-pen-title="Ejercicio 2" data-editable="true" data-user="cromerolo2" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+                            <span>See the Pen <a href="https://codepen.io/cromerolo2/pen/XWYmbjx">
+                            Ejercicio 2</a> by Cristian (<a href="https://codepen.io/cromerolo2">@cromerolo2</a>)
+                            on <a href="https://codepen.io">CodePen</a>.</span>
+                          </p>
+                          <br><br>
+                        <zero-md src="Lesson 2/lesson_2.md"></zero-md>
+                    </section>
+                </section>
+            </section>
+            <section class="accordion-item" id="AccItemSeven">
+                <h2 class="accordion-header" id="headingAccItemSeven">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven"
+                        aria-expanded="true" aria-controls="collapseSeven">
+                        How to Create a Card (Using W3Schools example)
+                    </button>
+                </h2>
+                <section id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingAccItemSeven"
+                    data-bs-parent="#accordion-parent-container">
+                    <section class="accordion-body">
+                        <iframe src="https://cristianromero1234.github.io/web-development-course/Lesson%203/lesson_3.html" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="600px" allowfullscreen></iframe>
+                        <zero-md src="Lesson 3/lesson_3.md"></zero-md>
+                    </section>
+                </section>
+            </section>
+            <section class="accordion-item" id="AccItemEight">
+                <h2 class="accordion-header" id="headingAccItemEight">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight"
+                        aria-expanded="true" aria-controls="collapseEight">
+                        How to create a modal
+                    </button>
+                </h2>
+                <section id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingAccItemEight"
+                    data-bs-parent="#accordion-parent-container">
+                    <section class="accordion-body">
+                        <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="MWMPrmz" data-pen-title="How to Create a Modal" data-editable="true" data-user="cromerolo2" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+                            <span>See the Pen <a href="https://codepen.io/cromerolo2/pen/MWMPrmz">
+                            How to Create a Modal</a> by Cristian (<a href="https://codepen.io/cromerolo2">@cromerolo2</a>)
+                            on <a href="https://codepen.io">CodePen</a>.</span>
+                          </p>
+                        <zero-md src="Lesson 4/lesson_4.md"></zero-md>
+                    </section>
+                </section>
+            </section>
+            <section class="accordion-item" id="AccItemNine">
+                <h2 class="accordion-header" id="headingAccItemNine">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine"
+                        aria-expanded="true" aria-controls="collapseNine">
+                        Grid display of Cards Array (with Modal).
+                    </button>
+                </h2>
+                <section id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingAccItemNine"
+                    data-bs-parent="#accordion-parent-container">
+                    <section class="accordion-body">
+                        <zero-md src="Lesson 5/lesson_5.md"></zero-md>
+                    </section>
+                </section>
+            </section>
+            <section class="accordion-item" id="AccItemTen">
+                <h2 class="accordion-header" id="headingAccItemTen">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen"
+                        aria-expanded="true" aria-controls="collapseTen">
+                        Create a calculator App.
+                    </button>
+                </h2>
+                <section id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingAccItemTen"
+                    data-bs-parent="#accordion-parent-container">
+                    <section class="accordion-body">
+                        <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="ExBdopx" data-pen-title="Untitled" data-editable="true" data-user="cromerolo2" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+                            <span>See the Pen <a href="https://codepen.io/cromerolo2/pen/ExBdopx">
+                            Untitled</a> by Cristian (<a href="https://codepen.io/cromerolo2">@cromerolo2</a>)
+                            on <a href="https://codepen.io">CodePen</a>.</span>
+                          </p>
+                          <br><br>
+                        <zero-md src="Lesson 6.0/lesson_6.md"></zero-md>
+                    </section>
+                </section>
+            </section>
+            <section class="accordion-item" id="AccItemEleven">
+                <h2 class="accordion-header" id="headingAccItemEleven">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven"
+                        aria-expanded="true" aria-controls="collapseEleven">
+                        Algorithm for (calculator App)
+                    </button>
+                </h2>
+                <section id="collapseEleven" class="accordion-collapse collapse" aria-labelledby="headingAccItemEleven"
+                    data-bs-parent="#accordion-parent-container">
+                    <section class="accordion-body">
+                        <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="qBzJpza" data-pen-title="Untitled" data-editable="true" data-user="cromerolo2" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+                            <span>See the Pen <a href="https://codepen.io/cromerolo2/pen/qBzJpza">
+                            Untitled</a> by Cristian (<a href="https://codepen.io/cromerolo2">@cromerolo2</a>)
+                            on <a href="https://codepen.io">CodePen</a>.</span>
+                          </p><br><br>
+                        <zero-md src="Lesson 6.1/lesson_6.1.md"></zero-md>
+                    </section>
+                </section>
+            </section>
+            <section class="accordion-item" id="AccItemTwelve">
+                <h2 class="accordion-header" id="headingAccItemTwelve">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwelve"
+                        aria-expanded="true" aria-controls="collapseTwelve">
+                        Iphone calculator clone
+                    </button>
+                </h2>
+                <section id="collapseTwelve" class="accordion-collapse collapse" aria-labelledby="headingAccItemTwelve"
+                    data-bs-parent="#accordion-parent-container">
+                    <section class="accordion-body">
+                        <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="qBKLpRO" data-pen-title="Ejercicio 5: clonar Calculadora Iphone" data-editable="true" data-user="cromerolo2" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+                            <span>See the Pen <a href="https://codepen.io/cromerolo2/pen/qBKLpRO">
+                            Ejercicio 5: clonar Calculadora Iphone</a> by Cristian (<a href="https://codepen.io/cromerolo2">@cromerolo2</a>)
+                            on <a href="https://codepen.io">CodePen</a>.</span>
+                          </p><br><br>
+                        <zero-md src="Lesson 6.2/lesson_6.2.md"></zero-md>
+                    </section>
+                </section>
+            </section>
+            
         </section>
     </section>
+    <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
 </body>
 

@@ -3,6 +3,7 @@
 **Useful links:**
 - [CSS grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
 - [W3 Schools, grid layout module](https://www.w3schools.com/css/css_grid.asp)
+- [My take on the Exercise](https://cristianromero1234.github.io/web-development-course/Lesson%205/lesson_5.html)
 
 
 ## Introduction

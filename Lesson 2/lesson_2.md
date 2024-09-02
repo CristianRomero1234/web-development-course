@@ -27,7 +27,7 @@ As a "fun fact": technically, users don't even need an internet connection to vi
 - What are `objects` in JavaScript?
 
 ---
-The code is provided below or in [Here](./lesson_2.html):
+The code is provided below or in [Here](https://cristianromero1234.github.io/web-development-course/Lesson%202/lesson_2.html):
 
 ## Step 1: Set up the document structure
 
